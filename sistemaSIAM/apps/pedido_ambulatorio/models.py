@@ -61,7 +61,7 @@ class PA_tiene_Practicas(Pedido_Ambulatorio):
     # Un Pedido Ambulatorio puede tener muchas Practicas médicas
     practicas = models.ForeignKey(Practica_Medica, on_delete=models.CASCADE)
 
-    importeCoseguro = models.FloatField(blank=True, null=True)
+    importeCoseguro = models.FloatField(blank=True, null=True, verbose_name='Importe Coseguro')
     observaciones = models.TextField(max_length=200, blank=True, null=True)
 
 
