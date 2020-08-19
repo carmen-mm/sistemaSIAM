@@ -10,7 +10,7 @@ class Practica_Medica (models.Model):
     codigo = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=50)
     class Meta:
-        db_table ='practicasMedicas'
+        db_table ='PracticasMedicas'   #nombre de la tabla en la BD
         verbose_name = 'Práctica médica'
         verbose_name_plural = 'Prácticas médicas'
 
