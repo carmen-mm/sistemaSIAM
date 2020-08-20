@@ -62,7 +62,7 @@ ROOT_URLCONF = 'sistemaSIAM.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')], #acá le indicamos a Django la ubicación de los TEMPLATES
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
