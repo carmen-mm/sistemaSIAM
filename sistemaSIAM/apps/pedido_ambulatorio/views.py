@@ -4,4 +4,13 @@ from django.http import HttpResponse
 
 def index(request):
   return render(request,'practicasMedicas/index.html')
- # return HttpResponse("Hola mundo, probando las vistas")
+
+
+from django.views.generic import ListView
+
+from apps.pedido_ambulatorio.models import Diagnostico
+
+class DiagnosticoList(ListView):
+    model = Diagnostico
+    template_name = 'practicasMedicas/diagnostico.html'
+    paginate_by = 15

@@ -31,7 +31,7 @@
     <title> {% block title %}hola {% endblock %}</title>
 </head>
 
-    {% block content %} {% endblock %}
+    <!--{% block content %} {% endblock %} -->
 	<!-- Main container -->
 	<main class="full-box main-container">
 
@@ -149,7 +149,7 @@
 
 			<!-- Content -->
 			<div class="full-box tile-container">
-
+			{% block content1 %}
 				<a href="client-new.html" class="tile">
 					<div class="tile-tittle"> BENEFICIARIOS</div>
 					<div class="tile-icon">
@@ -189,8 +189,26 @@
 						<p>1 Registrada</p>
 					</div>
 				</a>
-
+			{% endblock %}
 			</div>
+{% block pagination %}
+  {% if is_paginated %}
+      <div class="pagination">
+          <span class="page-links">
+              {% if page_obj.has_previous %}
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Previo</a>
+              {% endif %}
+              <span class="page-current">
+                  Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+              </span>
+              {% if page_obj.has_next %}
+                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">Próximo</a>
+              {% endif %}
+          </span>
+      </div>
+  {% endif %}
+{% endblock %}
+
 
 
 		</section>
@@ -198,7 +216,7 @@
 
 
 
-{% block footer %}{% endblock %}
+<!--{% block footer %}{% endblock %} -->
 
     <script src="http://code.jquery.com/jquery-1.6.1.js"> </script>  <!-- CDN - Source version -->
     <script src="{% static 'js/bootstrap.min.css' %}"> </script>

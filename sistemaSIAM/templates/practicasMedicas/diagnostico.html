@@ -1,9 +1,18 @@
 {% extends 'base/base.html' %}
-{% block title %}diagnostico{% endblock %}
 
-{% block content %}
-    <h1>Probando diagnostico.html que extiende de base.html</h1>
+{% block title %}Diagnósticos{% endblock %}
+
+{% block content1 %}
+<div class="full-box">
+<h2>Diagnósticos</h2>
+
+<table>
+    <tr><th>CODIGO</th><th>NOMBRE</th></tr>
+    {% for diagnostico in object_list %}
+        <tr><td>{{ diagnostico.codigo }}</td>  <td align="left">{{ diagnostico.nombre }}</td> </tr>
 
 
-
+    {% endfor %}
+</table>
+</div>
 {% endblock %}
