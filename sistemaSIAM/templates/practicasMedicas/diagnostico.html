@@ -5,14 +5,24 @@
 {% block content1 %}
 <div class="full-box">
 <h2>Diagnósticos</h2>
+<div class="container-fluid">
+				<div class="table-responsive">
+					<table class="table table-dark table-sm">
+						<thead>
+							<tr class="text-center roboto-medium">
 
-<table>
-    <tr><th>CODIGO</th><th>NOMBRE</th></tr>
-    {% for diagnostico in object_list %}
-        <tr><td>{{ diagnostico.codigo }}</td>  <td align="left">{{ diagnostico.nombre }}</td> </tr>
+                                <th>CODIGO</th><th>NOMBRE</th>
+                            </tr>
+                         </thead>
+                            {% for diagnostico in object_list %}
+                                     <tr>
+                                         <td>{{ diagnostico.codigo }}</td>
+                                         <td align="left">{{ diagnostico.nombre }}</td>
+                                     </tr>
 
 
-    {% endfor %}
-</table>
+                            {% endfor %}
+                    </table>
+                </div>
 </div>
 {% endblock %}

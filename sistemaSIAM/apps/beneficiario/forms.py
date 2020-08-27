@@ -5,6 +5,7 @@ class BeneficiarioForm(forms.ModelForm):
     class Meta:
         model = Beneficiario
         #exclude = ()
+        #exclude = ['afiliado', 'nroAfiliado']
         fields = (
         'tipoDNI',
         'dni',
@@ -30,7 +31,7 @@ class BeneficiarioForm(forms.ModelForm):
                     'dni': forms.NumberInput(attrs={'class': 'form-control'}),
                     'nombre': forms.TextInput(attrs={'class': 'form-control'}),
                     'apellidos': forms.TextInput(attrs={'class': 'form-control'}),
-                    'afiliado': forms.CheckboxInput(attrs={'class': 'form-control'}),
+                    'afiliado': forms.Select(attrs={'class': 'form-control'}),
                     'nroAfiliado': forms.NumberInput(attrs={'class': 'form-control'}),
                     'localidad': forms.Select(attrs={'class': 'form-control'}),
                    }

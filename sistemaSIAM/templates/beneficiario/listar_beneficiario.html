@@ -5,15 +5,25 @@
 {% block content1 %}
 <div class="full-box">
 <h2 align="left">Beneficiarios</h2>
-
-<table>
-     <tr><th>DNI</th><th>NOMBRE</th><th>LOCALIDAD</th></tr>
-    {% for beneficiario in object_list %}
-      <tr><td>{{ beneficiario.dni }} </td>
-          <td align="left">- {{ beneficiario.apellidos }} {{ beneficiario.nombre }}</td>
-          <td align="left">- {{ beneficiario.localidad }} </td>
-      </tr>
-    {% endfor %}
-</table>
+    <div class="container-fluid">
+				<div class="table-responsive">
+					<table class="table table-dark table-sm">
+						<thead>
+							<tr class="text-center roboto-medium">
+                                <tr><th>TIPO DNI</th><th>DNI</th><th>NOMBRE</th><th>LOCALIDAD</th><th>AFILIADO</th><th>ACCIONES</th></tr>
+                        </thead>
+                            {% for beneficiario in object_list %}
+                                <tr>
+                                    <td>{{ beneficiario.tipoDNI }}</td>
+                                    <td>{{ beneficiario.dni }} </td>
+                                    <td> {{ beneficiario.apellidos }} {{ beneficiario.nombre }}</td>
+                                    <td> {{ beneficiario.localidad }} </td>
+                                    <td> {{ beneficiario.afiliado }} </td>
+                                    <td><button type="">Modificar </button></td>
+                                </tr>
+                            {% endfor %}
+                    </table>
+                </div>
+    </div>
 </div>
 {% endblock %}

@@ -5,9 +5,9 @@ class Especialidad (models.Model):
     class Meta:
         db_table ='Especialidades'
         verbose_name_plural='Especialidades'
-    idEspecialidad = models.IntegerField(primary_key=True)
+    idE = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=30)
-    descripcion = models.TextField(max_length=200)
+    #descripcion = models.TextField(max_length=200)
 
 class Doctor (models.Model):
     class Meta:

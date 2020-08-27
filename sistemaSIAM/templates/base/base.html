@@ -140,7 +140,7 @@
 			<!-- Div de Títulos  -->
 			<div class="full-box page-header">
 				<h3 class="text-left">
-					<i class="fab fa-dashcube fa-fw"></i> &nbsp; SIAM
+					 &nbsp; SIAM
 				</h3>
 				<p class="text-justify">
 					SISTEMA INTEGRAL DE AUDITORIA MEDICA
@@ -150,43 +150,42 @@
 			<!-- Content -->
 			<div class="full-box tile-container">
 			{% block content1 %}
-				<a href="client-new.html" class="tile">
+				<a href="/insertar" class="tile">
 					<div class="tile-tittle"> BENEFICIARIOS</div>
 					<div class="tile-icon">
-						<i class="fas fa-users fa-fw"></i>
-						<p>5 Registrados</p>
+						 <i class="fas fa-users fa-fw"></i>
 					</div>
 				</a>
 
-				<a href="item-list.html" class="tile">
-					<div class="tile-tittle">PRACTICAS AMBULATORIAS</div>
+				<a href="" class="tile">
+					<div class="tile-tittle">AMBULATORIAS</div>
 					<div class="tile-icon">
-						<i class="fas fa-pallet fa-fw"></i>
-						<p>9 Registrados</p>
+						<i class="fas fa-clipboard-list fa-fw"></i>
+
 					</div>
 				</a>
 
-				<a href="reservation-list.html" class="tile">
+				<a href="" class="tile">
 					<div class="tile-tittle">CIRUGIAS</div>
 					<div class="tile-icon">
-						<i class="fas fa-file-invoice-dollar fa-fw"></i>
-						<p>10 Registrados</p>
+						<i class="fas fa-ambulance fa-fw"></i>
+
 					</div>
 				</a>
 
-				<a href="user-list.html" class="tile">
-					<div class="tile-tittle">USUARIOS</div>
+				<a href="" class="tile">
+					<div class="tile-tittle">INTERNACIONES</div>
 					<div class="tile-icon">
-						<i class="fas fa-user-secret fa-fw"></i>
-						<p>50 Registrados</p>
+						<i class="fas fa-laptop-medical fa-fw"></i>
+
 					</div>
 				</a>
 
-				<a href="company.html" class="tile">
+				<a href="" class="tile">
 					<div class="tile-tittle">CENTROS MEDICOS</div>
 					<div class="tile-icon">
-						<i class="fas fa-store-alt fa-fw"></i>
-						<p>1 Registrada</p>
+						<i class="fas fa-clinic-medical fa-fw"></i>
+
 					</div>
 				</a>
 			{% endblock %}
@@ -208,17 +207,44 @@
       </div>
   {% endif %}
 {% endblock %}
-
-
-
 		</section>
+		<footer style="position:absolute; left: 0; bottom: 0px; width: 100%; min-height: 75px; max-height: 75px; height: 7%;">
+    <hr />
+    <p style="font-size:10pt;padding-left:1%; padding-right:1%">
+        <span style="float:right">-2020- Ante cualquier consulta o problemas con el sitio enviar e-mail a admin@gmail.com</span>
+    </p>
+</footer>
 	</main>
 
 
 
 <!--{% block footer %}{% endblock %} -->
 
-    <script src="http://code.jquery.com/jquery-1.6.1.js"> </script>  <!-- CDN - Source version -->
-    <script src="{% static 'js/bootstrap.min.css' %}"> </script>
+
+	<!--=============================================
+	=            Include JavaScript files           =
+	==============================================-->
+	<!-- jQuery V3.4.1 -->
+	<script src="{% static  'js/jquery-3.4.1.min.js' %}" ></script>
+
+	<!-- popper -->
+	<script src="{% static 'js/popper.min.js' %}" ></script>
+
+		<!-- jQuery Custom Content Scroller V3.1.5 -->
+	<script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}" ></script>
+
+	<!-- Bootstrap Material Design V4.0 -->
+	<script src="{% static 'js/bootstrap-material-design.min.js' %}" ></script>
+	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+
+	<script src="{% static 'js/main.js' %}" ></script>
+
+
+    <script src="{% static 'js/jquery-1.6.1.js' %}"> </script>  <!-- CDN - Source version -->
+	<!-- Bootstrap V4.3 -->
+	<script src="{% static 'js/bootstrap.min.css' %}"> </script>
+
+
 </body>
+
 </html>

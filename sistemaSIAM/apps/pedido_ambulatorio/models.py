@@ -8,7 +8,7 @@ from datetime import datetime
 
 class Practica_Medica (models.Model):
     codigo = models.IntegerField(primary_key=True)
-    nombre = models.CharField(max_length=50)
+    nombre = models.CharField(max_length=150)
     class Meta:
         db_table ='PracticasMedicas'   #nombre de la tabla en la BD
         verbose_name = 'Práctica médica'

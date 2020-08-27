@@ -5,8 +5,31 @@
 {% block content1 %}
 <form method="post">
     {%  csrf_token %}
-    {{ form.as_p}}
-    <button type="submit">Guardar </button>
+ <fieldset>
+		<legend align="left"><i class="fas fa-user"></i> &nbsp; Información básica</legend>
+           <div class="container-fluid">
+                <div class="table-responsive">
+					<table class="table table-dark table-sm">
+						<tr>
+                           <td> <label class="bmd-label-floating">Tipo DNI</label>
+                        {{ form.tipoDNI}}</td>
+                            <td><label class="bmd-label-floating">DNI</label>
+                        {{ form.dni}}</td>
+                        </tr>
+                        <tr>
+                            <td> <label class="bmd-label-floating">NOMBRE</label>{{ form.nombre}}</td>
+                            <td><label class="bmd-label-floating">APELLIDO</label>{{ form.apellidos}}</td>
+                            <td><label class="bmd-label-floating">LOCALIDAD</label>{{ form.localidad}} </td>
+                        </tr>
+                        <tr>
+                            <td> <label class="bmd-label-floating">AFILIADO</label>{{ form.afiliado}}</td>
+                            <td><label class="bmd-label-floating">N° AFILIADO</label>{{ form.nroAfiliado}}</td>
+                        </tr>
+                    </table>
+                </div>
 
+           </div>
+    <button type="submit">Guardar </button>
+ </fieldset>
 </form>
 {% endblock %}
