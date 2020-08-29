@@ -19,8 +19,9 @@
                                     <td> {{ beneficiario.apellidos }} {{ beneficiario.nombre }}</td>
                                     <td> {{ beneficiario.localidad }} </td>
                                     <td> {{ beneficiario.afiliado }} </td>
-                                    <td><button type="">Modificar </button></td>
-                                </tr>
+                                    <td><a class="btn btn-primary" href="{% url 'beneficiario:modificar' beneficiario.id %}">modificar</a>
+             <!--   no funciona el  eliminar  <a class="btn btn-primary" href="{% url 'beneficiario:eliminar' beneficiario.id %}">eliminar</a> </td>
+                               --></tr>
                             {% endfor %}
                     </table>
                 </div>

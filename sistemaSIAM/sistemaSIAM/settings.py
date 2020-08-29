@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.beneficiario',
-    'apps.centro_medico',
+    'apps.centromedico',
     'apps.doctores',
     'apps.localidad_atencion',
     'apps.pedido_ambulatorio',
@@ -86,7 +86,7 @@ DATABASES = {
        # 'ENGINE': 'django.db.backends.sqlite3',
        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',  # 'ENGINE': 'django.db.backends.postgresql_psycopg2'
-        'NAME': 'BDsiam',
+        'NAME': 'tesis',
         'USER': 'postgres',
         'PASSWORD': 'admin',
         'HOST': 'localhost',

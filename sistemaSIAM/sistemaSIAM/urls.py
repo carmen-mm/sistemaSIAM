@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-# Acá están las url globales y es donde se pueden incluir las urls de cada aplicación
-#from apps import views
+# Acá están las urls globales y se incluyen las urls de cada aplicación
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.beneficiario.urls')),
     path('', include('apps.pedido_ambulatorio.urls')),
+    path('', include('apps.doctores.urls')),
+    path('', include('apps.centromedico.urls')),
 ]

@@ -4,7 +4,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from apps.beneficiario.models import Beneficiario
 from apps.beneficiario.forms import BeneficiarioForm
@@ -34,3 +34,7 @@ class BeneficiarioModificar(UpdateView):
     # Redirigimos luego de insertar un beneficiario nuevo
     success_url = reverse_lazy('beneficiario:listar')
 
+class BeneficiarioEliminar(DeleteView):
+    model = Beneficiario
+    template_name = 'beneficiario/eliminar_beneficiario.html'
+    success_url = reverse_lazy('beneficiario:listar')
