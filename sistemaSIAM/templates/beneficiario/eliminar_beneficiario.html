@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Beneficiarios{% endblock %}
+
+{% block content1 %}
+<form method="post">
+    {% csrf_token %}
+<!--<div class="full-box">
+    <h2 align="left">¿Desea eliminar el registro de {{object.nombre}}?</h2>
+    <div class="container-fluid">
+				<div class="table-responsive">
+                    <button class="btn btn-danger" type="submit"> SI, eliminar</button>
+                    <a class="btn btn-default" href="{% url 'beneficiario:listar' beneficiario.id %}"> Cancelar </a>
+                </div>
+    </div>
+</div>
+-->
+  <h2 align="left">¿Desea eliminar el registro de {{object.nombre}}?</h2>
+                    <button class="btn btn-danger" type="submit"> SI eliminar</button>
+
+</form>
+{% endblock %}
