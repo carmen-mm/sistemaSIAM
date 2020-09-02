@@ -9,19 +9,33 @@
 				<div class="table-responsive">
 					<table class="table table-dark table-sm">
 						<thead>
-							<tr class="text-center roboto-medium">
+							<tr class="text-center roboto-medium" align="left">
 
-                                <th>MATRICULA</th><th>NOMBRE</th><th>DOMICILIO</th><th>TELEFONO</th><th>EMAIL</th><th>CONVENIO</th>
+                                <th align="left">MATRICULA</th>
+                                <th align="left">NOMBRE</th>
+                                <th align="left">ESPECIALIDAD</th>
+                                <th align="left">DOMICILIO</th>
+                                <th align="left">TELEFONO</th>
+                                <th align="left">EMAIL</th>
+                                <th align="left">CONVENIO</th>
+                                <th align="left">ACCIONES</th>
                             </tr>
                          </thead>
                             {% for doctor in object_list %}
                                      <tr>
                                          <td>{{ doctor.matriculaDoc }}</td>
-                                         <td align="left">{{ doctor.nombre }}</td>
-                                         <td align="left">{{ doctor.domicilio }}</td>
-                                         <td align="left">{{ doctor.telefono }}</td>
-                                         <td align="left">{{ doctor.email }}</td>
-                                         <td align="left">{{ doctor.convenioOSECAC }}</td>
+                                         <td>{{ doctor.apellidos }} {{ doctor.nombre}}</td>
+                                         {% for espe in doctor.especialidad.all %}
+
+                                         <td><ul>{{ espe.nombre }}</ul> </td>
+
+                                                {% endfor %}
+                                         <td>{{ doctor.domicilio }}</td>
+                                         <td>{{ doctor.telefono }}</td>
+                                         <td>{{ doctor.email }}</td>
+                                         <td>{{ doctor.convenioOSECAC }}</td>
+                                         <td><a class="btn btn-primary" href="#">modificar</a>
+
                                      </tr>
 
 

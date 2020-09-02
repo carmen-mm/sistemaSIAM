@@ -1,4 +1,4 @@
-'''
+
 from django.db import models
 from apps.beneficiario.models import Beneficiario
 from apps.doctores.models import Doctor
@@ -8,13 +8,13 @@ from datetime import datetime
 
 # Create your models here.
 
-#class Cirugia (models.Model):
-    codigoCirugia = models.IntegerField(null=False, blank=False)
-    nombre = models.CharField(max_length=50)
-    importeTotal = models.FloatField(null=False, blank=False)
-    descripcion = models.TextField(max_length=200)
+class Cirugia (models.Model):
+    codigoCirugia = models.IntegerField(primary_key=True)
+    nombre = models.CharField(max_length=150)
+  #  importeTotal = models.FloatField(null=False, blank=False)
+  # descripcion = models.TextField(max_length=200)
 
-
+'''
 #class Solicitud_Cirugia (models.Model):
     estado_CHOICES(
         ('P', 'PENDIENTE',),

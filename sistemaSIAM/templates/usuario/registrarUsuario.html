@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Registrar Usuario{% endblock %}
+
+{% block content1 %}
+<form method="post">
+    {%  csrf_token %}
+<fieldset>
+		<legend align="left"><i class="fas fa-user"></i>  &nbsp;  Información básica - Nuevo Usuario</legend>
+           <div class="container-fluid">
+                <div class="table-responsive">
+
+                             <div align="left" class="form-group">
+
+                                <input type="text" class="form-control" placeholder="Nombre" name="first_name">
+                             </div>
+                            <div align="left" class="form-group">
+
+                                <input type="text" class="form-control" placeholder="Apellido" name="last_name">
+                            </div>
+                            <div align="left" class="form-group">
+
+                                <input type="text" class="form-control" placeholder="E-mail" name="email">
+                             </div>
+                            <div align="left" class="form-group">
+
+                                <input type="text" class="form-control" placeholder="Usuario" name="username">
+                            </div>
+                            <div align="left" class="form-group">
+
+                                <input type="password" class="form-control" placeholder="Contraseña" name="password1">
+                            </div>
+                            <div align="left" class="form-group">
+
+                                <input type="password" class="form-control" placeholder="Ingrese nuevamente su contraseña" name="password2">
+                            </div>
+
+                            <button type="submit">Guardar </button>
+
+
+
+                </div>
+
+           </div>
+
+ </fieldset>
+</form>
+{% endblock %}

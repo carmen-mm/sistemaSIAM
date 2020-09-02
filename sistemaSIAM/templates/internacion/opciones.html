@@ -1,0 +1,8 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Internaciones{% endblock %}
+
+{% block content1 %}
+        <a class="btn btn-primary" href="{% url 'internacion:nuevaI' %}">NUEVA INTERNACION</a>
+        <a class="btn btn-primary" href="{% url 'internacion:listarI' %}">LISTADO INTERNACIONES</a>
+{% endblock %}

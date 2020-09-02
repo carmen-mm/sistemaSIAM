@@ -28,22 +28,23 @@
 	<!-- General Styles -->
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <title> {% block title %}hola {% endblock %}</title>
+    <title> {% block title %} SIAM{% endblock %}</title>
 </head>
 
     <!--{% block content %} {% endblock %} -->
 	<!-- Main container -->
 	<main class="full-box main-container">
-
+{% block marco %}
 		<!-- Nav lateral // columna lateral izquierda-->
 		<section class="full-box nav-lateral">
+
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
 					<i class="far fa-times-circle show-nav-lateral"></i>
 					<img src="{% static 'assets/avatar/Avatar.png' %}" class="img-fluid" alt="Avatar">
 					<figcaption class="roboto-medium text-center">
-						USUARIO <br><small class="roboto-condensed-light">GRUPO DE USUARIO</small>
+						USUARIO: {{user.username | upper }} <br><small class="roboto-condensed-light">GRUPO DE USUARIO</small>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -51,7 +52,7 @@
                 <nav class="full-box nav-lateral-menu">
 					<ul>
 						<li>
-							<a href="#"> SIAM </a>
+							<a href="{% url 'practicasMedicas:index' %}"> SIAM </a>
 						</li>
 
 						<li>
@@ -118,11 +119,12 @@
 						</li>
 
 						<li>
-							<a href="company.html"> &nbsp; Centros Médicos</a>
+							<a href=""> &nbsp; Centros Médicos</a>
 						</li>
 					</ul>
 				</nav>
 			</div>
+
 		</section>
 
 		<!-- Contenido central -->
@@ -132,19 +134,20 @@
 
 				<a>	SIAM - SISTEMA INTEGRAL DE AUDITORIA MEDICA</a>
 
-				<a href="user-update.html">
+				<a href="">
 					<i class="fas fa-user-cog"></i>
 				</a>
-				<a href="#" class="btn-exit-system">
+				<a href="{% url 'logout' %}" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
 				</a>
 			</nav>
-
+{% endblock %}
 
 			<!-- Content -->
 			<div class="full-box tile-container">
 			{% block content1 %}
-				<a href="/insertar" class="tile">
+			<!--	<a href="/insertar" class="tile"> -->
+				<a href="/opciones" class="tile">
 					<div class="tile-tittle"> BENEFICIARIOS</div>
 					<div class="tile-icon">
 						 <i class="fas fa-users fa-fw"></i>
@@ -167,7 +170,7 @@
 					</div>
 				</a>
 
-				<a href="" class="tile">
+				<a href="{% url 'internacion:opcionesI'%}" class="tile">
 					<div class="tile-tittle">INTERNACIONES</div>
 					<div class="tile-icon">
 						<i class="fas fa-laptop-medical fa-fw"></i>
@@ -175,7 +178,7 @@
 					</div>
 				</a>
 
-				<a href="" class="tile">
+				<a href="{% url 'centromedico:opcionesCM'%}" class="tile">
 					<div class="tile-tittle">CENTROS MEDICOS</div>
 					<div class="tile-icon">
 						<i class="fas fa-clinic-medical fa-fw"></i>
@@ -206,7 +209,7 @@
 <footer style="position:absolute; left: 0; bottom: 0px; width: 100%; min-height: 75px; max-height: 75px; height: 7%;">
     <hr />
     <p style="font-size:10pt;padding-left:1%; padding-right:1%">
-        <span style="float:right">-2020- Ante cualquier consulta o problemas con el sitio enviar e-mail a admin@gmail.com</span>
+        <span style="float:right">  * 2020 * Ante cualquier consulta o problemas con el sitio enviar e-mail a admin@gmail.com</span>
     </p>
 </footer>
 	</main>

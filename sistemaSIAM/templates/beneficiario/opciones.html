@@ -1,0 +1,8 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Beneficiarios{% endblock %}
+
+{% block content1 %}
+        <a class="btn btn-primary" href="{% url 'beneficiario:insertar' %}">NUEVO BENEFICIARIO</a>
+        <a class="btn btn-primary" href="{% url 'beneficiario:listar' %}">LISTADO BENEFICIARIO</a>
+{% endblock %}

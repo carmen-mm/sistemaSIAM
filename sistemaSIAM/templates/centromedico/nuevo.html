@@ -6,7 +6,7 @@
 <form method="post">
     {%  csrf_token %}
  <fieldset>
-		<legend align="left"><i class="fas fa-user"></i> &nbsp; Información básica</legend>
+		<legend align="left"><i class="fas fa-clinic-medical fa-fw"></i> &nbsp; Información básica - Nuevo Centro Médico</legend>
            <div class="container-fluid">
                 <div class="table-responsive">
 					<table class="table table-dark table-sm">
@@ -22,8 +22,8 @@
                             <td><label class="bmd-label-floating">E-MAIL</label>{{ form.e_mail}} </td>
                         </tr>
                         <tr>
-                            <td> <label class="bmd-label-floating">ESPECIALIDADES</label>{{ form.especialidades}}</td>
-                            <td><label class="bmd-label-floating">DOCTORES</label>{{ form.doctores}}</td>
+                            <td align="left"> <label class="bmd-label-floating">ESPECIALIDADES</label>{{ form.especialidades}}</td>
+                            <td align="left"><label class="bmd-label-floating">DOCTORES</label>{{ form.doctores}}</td>
                         </tr>
                     </table>
                 </div>

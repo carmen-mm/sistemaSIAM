@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Nueva Internación{% endblock %}
+
+{% block content1 %}
+<form method="post">
+    {%  csrf_token %}
+ <fieldset>
+		<legend align="left"><i class="fas fa-laptop-medical fa-fw"></i> &nbsp; Información básica - Nueva internación</legend>
+           <div class="container-fluid">
+                <div class="table-responsive">
+					<table class="table table-dark table-sm">
+						<tr>
+                            <td><label class="bmd-label-floating">Beneficiario</label>{{ form.beneficiario}} </td>
+                        </tr>
+                        <tr>
+                            <td><label class="bmd-label-floating">Centro Médico</label>{{ form.centromedico}} </td>
+                        </tr>
+                        <tr>
+                            <td><label class="bmd-label-floating">Doctor Tratante</label>{{ form.doctorTratante}} </td>
+                        </tr>
+                        <tr>
+                            <td> <label class="bmd-label-floating">Motivo Internación</label>{{ form.diagnostico}}</td>
+                        </tr>
+                        <tr>
+                            <td><label class="bmd-label-floating">Fecha Ingreso</label>{{ form.fecha_ingreso}}</td>
+                            <td><label class="bmd-label-floating">Fecha Egreso</label>{{ form.fecha_egreso}}</td>
+                            <td><label class="bmd-label-floating">Días Autorizados</label>{{ form.dias_dados}}</td>
+                            <td><label class="bmd-label-floating">Días Prórroga</label>{{ form.dias_prorroga}}</td>
+
+                        </tr>
+                        <tr>
+                            <td><label class="bmd-label-floating">Internación</label>{{ form.tipo1_internacion}} </td>
+                            <td><label class="bmd-label-floating">Tipo</label>{{ form.tipo2_internacion}} </td>
+                        </tr>
+                    </table>
+                </div>
+
+           </div>
+    <button type="submit">Guardar </button>
+ </fieldset>
+</form>
+{% endblock %}

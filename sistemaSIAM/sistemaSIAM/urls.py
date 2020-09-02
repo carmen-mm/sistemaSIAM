@@ -14,14 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth.views import LoginView, logout_then_login
 from django.urls import path, include
-
 # Acá están las urls globales y se incluyen las urls de cada aplicación
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('apps.beneficiario.urls')),
-    path('', include('apps.pedido_ambulatorio.urls')),
-    path('', include('apps.doctores.urls')),
-    path('', include('apps.centromedico.urls')),
+    path('beneficiario/', include('apps.beneficiario.urls')),
+    path('ambulatorio/', include('apps.pedido_ambulatorio.urls')),
+    path('doctores/', include('apps.doctores.urls')),
+    path('centromedico/', include('apps.centromedico.urls')),
+    path('internacion/', include('apps.solicitud_internacion.urls')),
+    path('usuario/', include('apps.usuario.urls')),
+    path('accounts/login/', LoginView.as_view(template_name='login.html')),
+    path('logout/', logout_then_login, name='logout'),
 ]

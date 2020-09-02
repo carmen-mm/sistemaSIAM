@@ -1,5 +1,7 @@
+from django.forms import ModelForm
 from django import forms
 from apps.doctores.models import Doctor
+from django.core.mail import EmailMessage
 
 class DoctorForm(forms.ModelForm):
     class Meta:
@@ -8,8 +10,8 @@ class DoctorForm(forms.ModelForm):
             'matriculaDoc',
             'cuit',
             'nombre',
-            'apellido',
-            'especialidades',
+            'apellidos',
+            'especialidad',
             'telefono',
             'domicilio',
             'email',
@@ -20,8 +22,8 @@ class DoctorForm(forms.ModelForm):
             'matriculaDoc':'Matrícula',
             'cuit': 'CUIT',
             'nombre': 'Nombre',
-            'apellido': 'Apellido',
-            'especialidades': 'Especialidades',
+            'apellidos': 'Apellido',
+            'especialidad': 'Especialidades',
             'telefono' : 'Teléfono',
             'domicilio': 'domicilio',
             'email': 'E-mail',
@@ -30,14 +32,14 @@ class DoctorForm(forms.ModelForm):
          }
 
         widgets = {
-                  'matriculaDoc': forms.IntegerField(attrs={'class': 'form-control'}),
+                  'matriculaDoc': forms.NumberInput(attrs={'class': 'form-control'}),
                   'cuit': forms.TextInput(attrs={'class': 'form-control'}),
                   'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-                  'apellido': forms.TextInput(attrs={'class': 'form-control'}),
-                  'especialidades': forms.CheckboxSelectMultiple(),
+                  'apellidos': forms.TextInput(attrs={'class': 'form-control'}),
+                  'especialidad': forms.CheckboxSelectMultiple(),
                   'telefono': forms.TextInput(attrs={'class': 'form-control'}),
                   'domicilio': forms.TextInput(attrs={'class': 'form-control'}),
-                  'email': forms.EmailField(attrs={'class': 'form-control'}),
+                  'email': forms.EmailInput(attrs={'class': 'form-control'}),
                   'convenioOSECAC': forms.Select(attrs={'class': 'form-control'}),
 
             }

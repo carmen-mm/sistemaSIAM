@@ -7,7 +7,6 @@ class Especialidad (models.Model):
         verbose_name_plural='Especialidades'
     idE = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=150)
-    #descripcion = models.TextField(max_length=200)
     def __str__(self):
         return self.nombre
 
@@ -17,8 +16,7 @@ class Doctor (models.Model):
         verbose_name_plural='Doctores'
     convenio_CHOICES = (
         ('S', 'Con Convenio',),
-        ('N', 'Sin Convenio',),
-    )
+        ('N', 'Sin Convenio',),)
     matriculaDoc = models.IntegerField(verbose_name='Matrícula')
     cuit = models.CharField(primary_key=True, max_length=13, help_text='Ej:11-12345678-0')
     nombre = models.CharField(max_length=30)
@@ -29,6 +27,9 @@ class Doctor (models.Model):
     email = models.EmailField(max_length=30,verbose_name='E-mail', help_text='Ej: hola@ejemplo.com')
     convenioOSECAC = models.CharField(max_length=1, choices=convenio_CHOICES, blank=False, null=False)
 
+    def __str__(self):
+        cadena = self.apellidos + " " + self.nombre
+        return cadena
 
 
 

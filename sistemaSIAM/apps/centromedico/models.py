@@ -20,6 +20,9 @@ class CentroMedico (models.Model):
     especialidades = models.ManyToManyField(Especialidad)
     doctores = models.ManyToManyField(Doctor)
 
+    def __str__(self):
+        return self.razonSocial
+
 
 
 

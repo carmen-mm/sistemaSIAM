@@ -9,11 +9,18 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from apps.beneficiario.models import Beneficiario
 from apps.beneficiario.forms import BeneficiarioForm
 
+
+def Opciones(request):
+  return render(request,'beneficiario/opciones.html')
+
+
+
 class BeneficiarioList(ListView):
 
     model = Beneficiario
     template_name = 'beneficiario/listar_beneficiario.html'
     paginate_by = 10
+    queryset = Beneficiario.objects.order_by('apellidos')
 
 
 class BeneficiarioInsert(CreateView):
