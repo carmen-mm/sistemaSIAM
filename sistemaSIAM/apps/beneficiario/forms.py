@@ -4,8 +4,6 @@ from apps.beneficiario.models import Beneficiario
 class BeneficiarioForm(forms.ModelForm):
     class Meta:
         model = Beneficiario
-        #exclude = ()
-        #exclude = ['afiliado', 'nroAfiliado']
         fields = (
         'tipoDNI',
         'dni',

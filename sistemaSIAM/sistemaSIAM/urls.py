@@ -28,4 +28,5 @@ urlpatterns = [
     path('usuario/', include('apps.usuario.urls')),
     path('accounts/login/', LoginView.as_view(template_name='login.html')),
     path('logout/', logout_then_login, name='logout'),
+
 ]

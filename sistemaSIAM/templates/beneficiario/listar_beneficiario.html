@@ -20,12 +20,13 @@
                                     <td> {{ beneficiario.localidad }} </td>
                                     <td> {{ beneficiario.afiliado }} </td>
                                     <td><a class="btn btn-primary" href="{% url 'beneficiario:modificar' beneficiario.id %}">modificar</a>
-             <!--   no funciona el  eliminar  <a class="btn btn-primary" href="{% url 'beneficiario:eliminar' beneficiario.id %}">eliminar</a> </td>
-                               --></tr>
+                                        <a class="btn btn-primary" href="{% url 'beneficiario:eliminar' beneficiario.id %}">eliminar</a> </td>
+                                </tr>
                             {% endfor %}
                     </table>
                 </div>
     </div>
+    <a class="btn btn-primary" href="{% url 'beneficiario:reporte' %}" target="_blank">IMPRIMIR LISTADO</a>
     <a class="btn btn-primary" href="{% url 'practicasMedicas:index' %}">VOLVER</a>
 </div>
 {% endblock %}

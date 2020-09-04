@@ -3,6 +3,7 @@
 {% block title %}Beneficiarios{% endblock %}
 
 {% block content1 %}
+
 <form method="post">
     {%  csrf_token %}
  <fieldset>
@@ -22,8 +23,9 @@
                             <td><label class="bmd-label-floating">LOCALIDAD</label>{{ form.localidad}} </td>
                         </tr>
                         <tr>
-                            <td> <label class="bmd-label-floating">AFILIADO</label>{{ form.afiliado}}</td>
-                            <td><label class="bmd-label-floating">N° AFILIADO</label>{{ form.nroAfiliado}}</td>
+                             <td> <label class="bmd-label-floating">AFILIADO</label>{{ form.afiliado}}</td>
+                             <td><label class="bmd-label-floating">N° AFILIADO</label>{{ form.nroAfiliado}}</td>
+
                         </tr>
                     </table>
                 </div>

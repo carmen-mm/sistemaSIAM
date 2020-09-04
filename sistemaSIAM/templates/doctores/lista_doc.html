@@ -13,7 +13,6 @@
 
                                 <th align="left">MATRICULA</th>
                                 <th align="left">NOMBRE</th>
-                                <th align="left">ESPECIALIDAD</th>
                                 <th align="left">DOMICILIO</th>
                                 <th align="left">TELEFONO</th>
                                 <th align="left">EMAIL</th>
@@ -25,22 +24,25 @@
                                      <tr>
                                          <td>{{ doctor.matriculaDoc }}</td>
                                          <td>{{ doctor.apellidos }} {{ doctor.nombre}}</td>
-                                         {% for espe in doctor.especialidad.all %}
 
+                                      <!-- Mostrar todas las especialidades de un doctor
+                                        {% for espe in doctor.especialidad.all %}
                                          <td><ul>{{ espe.nombre }}</ul> </td>
+                                                {% endfor %} -->
 
-                                                {% endfor %}
                                          <td>{{ doctor.domicilio }}</td>
                                          <td>{{ doctor.telefono }}</td>
                                          <td>{{ doctor.email }}</td>
                                          <td>{{ doctor.convenioOSECAC }}</td>
                                          <td><a class="btn btn-primary" href="#">modificar</a>
-
+                                         <td><a class="btn btn-primary" href="#">eliminar</a>
                                      </tr>
 
 
                             {% endfor %}
                     </table>
                 </div>
+                <a class="btn btn-primary" href="{% url 'doctores:reporteDoc' %}" target="_blank">IMPRIMIR LISTADO</a>
+                <a class="btn btn-primary" href="{% url 'practicasMedicas:index' %}">VOLVER</a>
 </div>
 {% endblock %}

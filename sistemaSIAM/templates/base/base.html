@@ -147,7 +147,7 @@
 			<div class="full-box tile-container">
 			{% block content1 %}
 			<!--	<a href="/insertar" class="tile"> -->
-				<a href="/opciones" class="tile">
+				<a href="{% url 'beneficiario:opciones'%}" class="tile">
 					<div class="tile-tittle"> BENEFICIARIOS</div>
 					<div class="tile-icon">
 						 <i class="fas fa-users fa-fw"></i>
@@ -187,6 +187,7 @@
 				</a>
 			{% endblock %}
 			</div>
+
 {% block pagination %}
   {% if is_paginated %}
       <div class="pagination">
@@ -204,6 +205,7 @@
       </div>
   {% endif %}
 {% endblock %}
+
 		</section>
 
 <footer style="position:absolute; left: 0; bottom: 0px; width: 100%; min-height: 75px; max-height: 75px; height: 7%;">
@@ -238,10 +240,29 @@
 	<script src="{% static 'js/main.js' %}" ></script>
 
 
-    <script src="{% static 'js/jquery-1.6.1.js' %}"> </script>  <!-- CDN - Source version -->
+    <!--<script src="{% static 'js/jquery-1.6.1.js' %}"> </script>  &lt;!&ndash; CDN - Source version &ndash;&gt;-->
 	<!-- Bootstrap V4.3 -->
 	<script src="{% static 'js/bootstrap.min.css' %}"> </script>
 
+	<script>
+	$(document).ready(function () {
+
+		$('#id_afiliado').on('change', function () {
+
+			console.log("change");
+
+			var id_afiliado = $('#id_afiliado').val();
+
+			console.log(id_afiliado);
+
+			if(id_afiliado == 'N'){
+				$("#id_nroAfiliado").attr('disabled',true);
+			}else{
+				$("#id_nroAfiliado").removeAttr('disabled');
+			}
+		});
+	});
+	</script>
 
 </body>
 

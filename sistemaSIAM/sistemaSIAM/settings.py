@@ -46,6 +46,7 @@ INSTALLED_APPS = [
   # 'apps.solicitud_cirugia',
     'apps.solicitud_internacion',
     'apps.usuario',
+    'wkhtmltopdf',
 
 ]
 
@@ -140,3 +141,5 @@ STATICFILES_DIRS = [(os.path.join(BASE_DIR, 'static'))]
 
 LOGIN_REDIRECT_URL = reverse_lazy('practicasMedicas:index')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
