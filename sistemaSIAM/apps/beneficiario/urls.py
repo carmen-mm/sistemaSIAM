@@ -12,6 +12,5 @@ urlpatterns = [
    path('insertar/', login_required(BeneficiarioInsert.as_view()), name='insertar'),
    path('modificar/<int:pk>',login_required( BeneficiarioModificar.as_view()), name='modificar'),
    path('eliminar/<int:pk>', login_required(BeneficiarioEliminar.as_view()), name='eliminar'),
-   #path('pdf/', hello_pdf, name='pdf')
    path('reporte/', login_required(ReportePDF.as_view()), name='reporte')
 ]

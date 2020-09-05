@@ -8,30 +8,33 @@
 <div class="container-fluid">
 				<div class="table-responsive">
 					<table class="table table-dark table-sm">
-						<thead>
-							<tr class="text-center roboto-medium" align="left">
+						<thead align="left">
+							<tr class="text roboto-medium" align="left">
 
                                 <th align="left">RAZON SOCIAL</th>
                                 <th align="left">LOCALIDAD</th>
                                 <th align="left">DOMICILIO</th>
                                 <th align="left">TELEFONO</th>
                                 <th align="left">EMAIL</th>
+                                <th align="left">ACCIONES</th>
 
                             </tr>
                          </thead>
                             {% for centromedico in object_list %}
-                                     <tr>
+                                     <tr align="left">
                                          <td>{{ centromedico.razonSocial }}</td>
                                          <td>{{ centromedico.localidad }}</td>
                                          <td>{{ centromedico.domicilio }}</td>
                                          <td>{{ centromedico.telefono }}</td>
                                          <td>{{ centromedico.e_mail }}</td>
-
+                                         <td><a class="btn btn-primary" href="{% url 'centromedico:modificarCM' centromedico.id %}">modificar</a></td>
                                      </tr>
 
 
                             {% endfor %}
                     </table>
                 </div>
+    <a class="btn btn-primary" href="{% url 'centromedico:reporteCM' %}" target="_blank">IMPRIMIR LISTADO</a>
+    <a class="btn btn-primary" href="{% url 'practicasMedicas:index' %}">VOLVER</a>
 </div>
 {% endblock %}

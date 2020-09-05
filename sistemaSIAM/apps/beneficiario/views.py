@@ -7,7 +7,7 @@ from reportlab.pdfgen import canvas
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from reportlab.lib.units import cm
 from reportlab.lib import colors
-#from reportlab.lib.pagesizes import A4
+from reportlab.lib.pagesizes import A4
 from django.urls import reverse_lazy
 from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView
 
@@ -19,7 +19,7 @@ class ReportePDF(View):
     pdf = canvas.Canvas("listado.pdf")
     pdf.save()
     def cabecera(self, pdf):
-        # Utilizamos el archivo hola.png que está guardado en la carpeta media
+        # Utilizamos el archivo siam.png que está guardado en la carpeta media
         archivo_imagen = settings.MEDIA_ROOT + '/siam.png'
         # Definimos el tamaño de la imagen a cargar y las coordenadas correspondientes
         pdf.drawImage(archivo_imagen, 30, 680, 200, 200, preserveAspectRatio=True)           #40, 750, 120, 90,
@@ -73,10 +73,6 @@ class ReportePDF(View):
         detalle_orden.drawOn(pdf, 60, y)
 
 
-
-
-
-
 def Opciones(request):
   return render(request,'beneficiario/opciones.html')
 
@@ -112,20 +108,4 @@ class BeneficiarioEliminar(DeleteView):
     template_name = 'beneficiario/eliminar_beneficiario.html'
     success_url = reverse_lazy('beneficiario:listar')
 
-'''def hello_pdf(request):
-    # Create the HttpResponse object with the appropriate PDF headers.
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename=hello.pdf'
 
-    # Create the PDF object, using the response object as its "file."
-    p = canvas.Canvas(response)
-
-    # Draw things on the PDF. Here's where the PDF generation happens.
-    # See the ReportLab documentation for the full list of functionality.
-    p.drawString(100, 100, "Hello world.")
-
-    # Close the PDF object cleanly, and we're done.
-    p.showPage()
-    p.save()
-    return response
-'''

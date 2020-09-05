@@ -2,7 +2,11 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from apps.solicitud_internacion.models import Internacion
+from apps.centromedico.models import CentroMedico
 from apps.solicitud_internacion.forms import InternacionForm
+from django.http import HttpResponse
+
+import simplejson
 
 # Create your views here.
 
@@ -35,3 +39,17 @@ class InternacionModificar(UpdateView):
     template_name = 'internacion/nuevo.html'
     # Redirigimos luego de insertar una internacion nueva
     success_url = reverse_lazy('internacion:listarI')
+
+def DoctoresPorCentroMedico(request):
+    id_centromedico = request.GET.get('id_centromedico')
+    result = {}
+    result['data'] = []
+    if id_centromedico:
+        doctores = []
+        for doc in CentroMedico.objects.get(id=id_centromedico).doctores.values():
+            doctores.append({
+                'cuit': doc['cuit'],
+                'nombre': doc['apellidos'] + " " + doc['nombre']
+            })
+        result['data'] = doctores
+    return HttpResponse(simplejson.dumps(result, ensure_ascii=False), content_type='application/json')

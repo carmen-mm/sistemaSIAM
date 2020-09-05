@@ -261,8 +261,64 @@
 				$("#id_nroAfiliado").removeAttr('disabled');
 			}
 		});
+
+		$('#id_trabaja_en').on('change', function () {
+
+			console.log("change");
+
+			var id_trabaja_en = $('#id_trabaja_en').val();
+
+			console.log(id_trabaja_en);
+
+			if(id_trabaja_en == 'CM'){
+				$("#id_domicilio").attr('disabled',true);
+				$("#id_telefono").attr('disabled',true);
+			}else{
+				$("#id_domicilio").removeAttr('disabled');
+				$("#id_telefono").removeAttr('disabled');
+			}
+		});
+
+		doctoresPorCentroMedico();
+
+		$('#id_centromedico').on('change', function () {
+			doctoresPorCentroMedico();
+		});
+
+		function doctoresPorCentroMedico() {
+			if ($('#id_centromedico')) {
+				var id_centromedico = $('#id_centromedico').val();
+				if(id_centromedico != "") {
+					$.ajax({
+						type: 'GET',
+						url: '/internacion/doctor_por_centro_medico/',
+						cache: false,
+						data: {'id_centromedico': id_centromedico},
+						success: function(data) {
+							var options = "<option selected='selected' value=''>---------</option>";
+							if(data.data.length > 0) {
+								for(var i=0; i < data.data.length; i++) {
+									var strSelect = "";
+									if ($("select[id^='id_doctorTratante']").val() == data.data[i].cuit)
+										strSelect = "selected='selected'";
+									options += '<option value="' + data.data[i].cuit + '" ' + strSelect + '>' + data.data[i].nombre + '</option>';
+								}
+							}
+							$("select[id^='id_doctorTratante']").html(options);
+						},
+						error: function(data) {
+							$("select[id^='id_doctorTratante']").html("<option selected='selected' value=''>---------</option>");
+						}
+					});
+				}
+				else {
+					$("select[id^='id_doctorTratante']").html("<option selected='selected' value=''>---------</option>");
+				}
+			}
+		}
 	});
-	</script>
+
+</script>
 
 </body>
 

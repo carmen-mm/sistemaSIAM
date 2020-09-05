@@ -5,6 +5,15 @@ from apps.localidad_atencion.models import Localidad
 # Un beneficiario es una persona que está empadronada correctamente en la obra social
 
 class Beneficiario(models.Model):
+    class Meta:
+        db_table ='Beneficiarios'
+        verbose_name_plural = 'Beneficiarios'
+        ordering = ['-apellidos']
+        #La dupla tipoDNI y dni debe ser única
+        constraints = [
+            models.UniqueConstraint(fields=['tipoDNI', 'dni'], name='documento')
+        ]
+
     AFILIADO_CHOICES = (
         ('S', 'AFILIADO'),
         ('N', 'NO AFILIADO'),
@@ -15,21 +24,17 @@ class Beneficiario(models.Model):
         ('LE', 'LE'),
         ('S/D', 'S/D'),
     )
-
+    #Atributos
     tipoDNI = models.CharField(max_length=3, choices=tipoDNI_CHOICES)
     dni = models.IntegerField()
     nombre = models.CharField(max_length=20)
     apellidos = models.CharField(max_length=30)
     afiliado = models.CharField(max_length=1, choices=AFILIADO_CHOICES)
     nroAfiliado = models.IntegerField(verbose_name='N° Afiliado', blank=True, null=True)
+
+    #Relaciones
     localidad = models.ForeignKey(Localidad, on_delete=models.CASCADE)
-    class Meta:
-        db_table ='Beneficiarios'
-        verbose_name_plural = 'Beneficiarios'
-        #unique_together = ("tipoDNI", "dni")
-        constraints = [
-            models.UniqueConstraint(fields=['tipoDNI', 'dni'], name='documento')
-        ]
+
     def __str__(self):
       cadena = self.apellidos +" "+self.nombre
       return cadena

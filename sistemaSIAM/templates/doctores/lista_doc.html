@@ -11,7 +11,7 @@
 						<thead>
 							<tr class="text-center roboto-medium" align="left">
 
-                                <th align="left">MATRICULA</th>
+                                <th align="left">MP</th>
                                 <th align="left">NOMBRE</th>
                                 <th align="left">DOMICILIO</th>
                                 <th align="left">TELEFONO</th>
@@ -22,7 +22,7 @@
                          </thead>
                             {% for doctor in object_list %}
                                      <tr>
-                                         <td>{{ doctor.matriculaDoc }}</td>
+                                         <td>{{ doctor.matriculaMP }}</td>
                                          <td>{{ doctor.apellidos }} {{ doctor.nombre}}</td>
 
                                       <!-- Mostrar todas las especialidades de un doctor

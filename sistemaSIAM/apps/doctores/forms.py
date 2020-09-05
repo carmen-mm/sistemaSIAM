@@ -7,10 +7,12 @@ class DoctorForm(forms.ModelForm):
     class Meta:
         model = Doctor
         fields = (
-            'matriculaDoc',
+            'matriculaMP',
+            'matriculaME',
             'cuit',
             'nombre',
             'apellidos',
+            'trabaja_en',
             'especialidad',
             'telefono',
             'domicilio',
@@ -19,7 +21,8 @@ class DoctorForm(forms.ModelForm):
          )
 
         labels = {
-            'matriculaDoc':'Matrícula',
+            'matriculaMP': 'Matrícula Provincial',
+            'matriculaME': 'Matrícula Especialidad',
             'cuit': 'CUIT',
             'nombre': 'Nombre',
             'apellidos': 'Apellido',
@@ -32,10 +35,12 @@ class DoctorForm(forms.ModelForm):
          }
 
         widgets = {
-                  'matriculaDoc': forms.NumberInput(attrs={'class': 'form-control'}),
+                  'matriculaMP': forms.NumberInput(attrs={'class': 'form-control'}),
+                  'matriculaME': forms.NumberInput(attrs={'class': 'form-control'}),
                   'cuit': forms.TextInput(attrs={'class': 'form-control'}),
                   'nombre': forms.TextInput(attrs={'class': 'form-control'}),
                   'apellidos': forms.TextInput(attrs={'class': 'form-control'}),
+                  'trabaja_en': forms.Select(attrs={'class': 'form-control'}),
                   'especialidad': forms.CheckboxSelectMultiple(),
                   'telefono': forms.TextInput(attrs={'class': 'form-control'}),
                   'domicilio': forms.TextInput(attrs={'class': 'form-control'}),
