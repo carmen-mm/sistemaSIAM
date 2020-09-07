@@ -604,7 +604,7 @@ jQuery.extend({
 	},
 
 	nodeName: function( elem, name ) {
-		return elem.nodeName && elem.nodeName.toUpperCase() === name.toUpperCase();
+		return elem.nodeName && elem.nodeName.tocentromedicoCase() === name.tocentromedicoCase();
 	},
 
 	// args is for internal usage only
@@ -2441,7 +2441,7 @@ if ( !jQuery.support.style ) {
 	jQuery.attrHooks.style = {
 		get: function( elem ) {
 			// Return undefined in the case of empty string
-			// Normalize to lowercase since IE uppercases css property names
+			// Normalize to lowercase since IE centromedicocases css property names
 			return elem.style.cssText.toLowerCase() || undefined;
 		},
 		set: function( elem, value ) {
@@ -4812,7 +4812,7 @@ if ( document.querySelectorAll ) {
 
 		div.innerHTML = "<p class='TEST'></p>";
 
-		// Safari can't handle uppercase or unicode characters when
+		// Safari can't handle centromedicocase or unicode characters when
 		// in quirks mode.
 		if ( div.querySelectorAll && div.querySelectorAll(".TEST").length === 0 ) {
 			return;
@@ -6206,7 +6206,7 @@ var ralpha = /alpha\([^)]*\)/i,
 	ropacity = /opacity=([^)]*)/,
 	rdashAlpha = /-([a-z])/ig,
 	// fixed for IE9, see #8346
-	rupper = /([A-Z]|^ms)/g,
+	rcentromedico = /([A-Z]|^ms)/g,
 	rnumpx = /^-?\d+(?:px)?$/i,
 	rnum = /^-?\d/,
 	rrelNum = /^[+\-]=/,
@@ -6221,7 +6221,7 @@ var ralpha = /alpha\([^)]*\)/i,
 	currentStyle,
 
 	fcamelCase = function( all, letter ) {
-		return letter.toUpperCase();
+		return letter.tocentromedicoCase();
 	};
 
 jQuery.fn.css = function( name, value ) {
@@ -6487,7 +6487,7 @@ if ( document.defaultView && document.defaultView.getComputedStyle ) {
 	getComputedStyle = function( elem, name ) {
 		var ret, defaultView, computedStyle;
 
-		name = name.replace( rupper, "-$1" ).toLowerCase();
+		name = name.replace( rcentromedico, "-$1" ).toLowerCase();
 
 		if ( !(defaultView = elem.ownerDocument.defaultView) ) {
 			return undefined;
@@ -7207,8 +7207,8 @@ jQuery.extend({
 		// We can fire global events as of now if asked to
 		fireGlobals = s.global;
 
-		// Uppercase the type
-		s.type = s.type.toUpperCase();
+		// centromedicocase the type
+		s.type = s.type.tocentromedicoCase();
 
 		// Determine if request has content
 		s.hasContent = !rnoContent.test( s.type );

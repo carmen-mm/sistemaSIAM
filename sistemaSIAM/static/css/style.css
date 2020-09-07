@@ -388,7 +388,7 @@ table form{
 	height: 40px;
 	line-height: 40px;
 	box-sizing: border-box;
-	text-transform: uppercase;
+	text-transform: centromedicocase;
 	border-bottom: 1px solid var(--border-color);
 	transition: all .2s ease-in-out;
 	font-family: 'roboto_medium_regular';

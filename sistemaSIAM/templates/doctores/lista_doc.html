@@ -23,15 +23,15 @@
                             {% for doctor in object_list %}
                                      <tr>
                                          <td>{{ doctor.matriculaMP }}</td>
-                                         <td>{{ doctor.apellidos }} {{ doctor.nombre}}</td>
+                                         <td>{{ doctor.apellidos | upper }} {{ doctor.nombre | upper}}</td>
 
                                       <!-- Mostrar todas las especialidades de un doctor
                                         {% for espe in doctor.especialidad.all %}
                                          <td><ul>{{ espe.nombre }}</ul> </td>
                                                 {% endfor %} -->
 
-                                         <td>{{ doctor.domicilio }}</td>
-                                         <td>{{ doctor.telefono }}</td>
+                                         <!--<td>{{ doctor.domicilio }}</td>
+                                         <td>{{ doctor.telefono }}</td> -->
                                          <td>{{ doctor.email }}</td>
                                          <td>{{ doctor.convenioOSECAC }}</td>
                                          <td><a class="btn btn-primary" href="#">modificar</a>

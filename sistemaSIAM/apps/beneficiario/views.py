@@ -105,7 +105,6 @@ class BeneficiarioModificar(UpdateView):
 
 class BeneficiarioEliminar(DeleteView):
     model = Beneficiario
-    template_name = 'beneficiario/eliminar_beneficiario.html'
     success_url = reverse_lazy('beneficiario:listar')
 
 

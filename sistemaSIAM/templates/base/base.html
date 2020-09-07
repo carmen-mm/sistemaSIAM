@@ -179,10 +179,16 @@
 				</a>
 
 				<a href="{% url 'centromedico:opcionesCM'%}" class="tile">
-					<div class="tile-tittle">CENTROS MEDICOS</div>
+					<div class="tile-tittle">PRESTADORES</div>
 					<div class="tile-icon">
-						<i class="fas fa-clinic-medical fa-fw"></i>
+						<i class="fas fa-notes-medical fa-fw"></i>
 
+					</div>
+				</a>
+				<a href="{% url 'novedades:mostrarN'%}" class="tile">
+					<div class="tile-tittle"> NOVEDADES</div>
+					<div class="tile-icon">
+						 <i class="fas fa-bell fa-fw"></i>
 					</div>
 				</a>
 			{% endblock %}
