@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Pedidos Ambulatorios{% endblock %}
+
+{% block content1 %}
+<form method="POST">
+  {% csrf_token %}
+<fieldset>
+		<legend align="left"><i class="fas fa-laptop-medical fa-fw"></i> &nbsp; Pedidos Ambulatorios</legend>
+           <div class="container-fluid">
+                <div class="table-responsive">
+                        {{ form.non_field_errors }}
+                         <!-- La factura -->
+                        <table class="table table-dark table-sm">
+                            <thead>
+							<tr class="text-center roboto-medium">
+                                <tr><th>N° PEDIDO</th><th>FECHA</th><th>NOMBRE</th>
+                        </thead>
+                        <tr>
+                            <td>{{ form.id }}</td>
+                            <td>{{ form.idPedido }}</td>
+                            <td>{{ form.fecha_ingreso }}</td>
+                            <td>{{ form.beneficiario.dni }}</td>
+                        </tr>
+                            <!-- Los items -->
+                            {{ formset.management_form }}
+                            {% for form in formset %}
+                                <tr>{{ form.non_field_errors }}
+                                    {{ form.id }}
+                                    <td><label class="bmd-label-floating">Práctica</label> {{ form.practicas }}</td>
+                                    <td><label class="bmd-label-floating">Doctor</label> {{ form.doctores }}</td>
+                                    <td><label class="bmd-label-floating">Diagnóstico</label> {{ form.diagnosticos }}</td>
+                                    <td><label class="bmd-label-floating">Coseguro $ </label> {{ form.importeCoseguro }}</td>
+                                    <td><label class="bmd-label-floating">Estado</label> {{ form.autorizado }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                </div>
+            </div>
+                    <button type="submit">Guardar</button>
+ </fieldset>
+</form>
+{% endblock %}

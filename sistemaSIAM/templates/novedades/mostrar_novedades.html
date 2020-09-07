@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Novedades{% endblock %}
+
+{% block content1 %}
+<div class="full-box">
+<h2 align="left">Novedades  </h2>
+    <div class="container-fluid">
+				<div class="table-responsive">
+					<table border="1" class="table table-dark table-sm">
+						<thead align="left">
+							<tr class="text-center roboto-medium">
+                                <tr><th>FECHA</th><th>TITULO</th><th>MENSAJE</th><th>ACCIONES</th></tr>
+                        </thead>
+                            {% for n in object_list %}
+
+                                <tr>
+                                    <td align="left">{{ n.fecha }}</td>
+                                    <td align="left">{{ n.titulo }} </td>
+                                    <td align="left">{{ n.mensaje }}</td>
+                                    <td><a class="btn btn-primary" href="{% url 'novedades:modificarN' n.id %}">modificar</a>
+                                        <a class="btn btn-primary" href="{% url 'novedades:eliminarN' n.id %}">eliminar</a> </td>
+
+
+                               </tr>
+                            {% endfor %}
+                    </table>
+                </div>
+    </div>
+        <a class="btn btn-primary" href="{% url 'novedades:subir' %}">SUBIR NUEVA NOVEDAD</a>
+        <a class="btn btn-primary" href="{% url 'practicasMedicas:index' %}">VOLVER</a>
+</div>
+{% endblock %}

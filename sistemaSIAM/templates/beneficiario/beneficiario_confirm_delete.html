@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Eliminar Beneficiario{% endblock %}
+
+{% block content1 %}
+<form method="post">
+    {% csrf_token %}
+<div class="full-box">
+    <h2 align="left"><i class="fas fa-exclamation fa-fw"></i>¿Desea eliminar el registro de {{object}}?</h2>
+    <div class="container-fluid">
+				<div align="left" class="table-responsive">
+                    <button class="btn btn-danger" type="submit"> SI, eliminar</button>
+                    <a class="btn btn-danger" role="button" href="{% url 'beneficiario:listar' %}"> Cancelar </button>
+                </div>
+    </div>
+</div>
+
+
+</form>
+{% endblock %}
