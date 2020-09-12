@@ -1,0 +1,8 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Pedidos Ambulatorios{% endblock %}
+
+{% block content1 %}
+        <a class="btn btn-primary" href="{% url 'practicasMedicas:detalle' %}">INGRESAR NUEVO PEDIDO</a>
+        <a class="btn btn-primary" href="{% url 'practicasMedicas:listarP' %}">LISTADO PEDIDOS AMBULATORIOS</a>
+{% endblock %}
