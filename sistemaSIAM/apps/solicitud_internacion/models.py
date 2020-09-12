@@ -8,7 +8,7 @@ from apps.pedido_ambulatorio.models import Diagnostico
 
 class Internacion(models.Model):
     class Meta:
-        db_table = 'Internación'
+        db_table = 'Internacion'
         verbose_name_plural = 'Internaciones'
 
     tipo1_CHOICES = (
@@ -20,12 +20,17 @@ class Internacion(models.Model):
         ('CLINICO', 'CLINICO'),
         ('QUIRURGICO', 'QUIRURGICO'),
     )
+    previa_CHOICES = (
+        ('SI', 'SI'),
+        ('NO', 'NO'),
+    )
 
     #atributos propios
     fecha_ingreso = models.DateField()
     fecha_egreso = models.DateField(null=True, blank=True)
     dias_dados = models.IntegerField(null=True, blank=True)
     dias_prorroga = models.IntegerField(null=True, blank=True)
+    previa = models.CharField(max_length=2, choices=previa_CHOICES)
     tipo1_internacion = models.CharField(max_length=10, choices=tipo1_CHOICES)
     tipo2_internacion = models.CharField(max_length=10, choices=tipo2_CHOICES)
 

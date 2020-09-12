@@ -12,11 +12,7 @@ class DoctorForm(forms.ModelForm):
             'cuit',
             'nombre',
             'apellidos',
-            'trabaja_en',
             'especialidad',
-            'telefono',
-            'domicilio',
-            'email',
             'convenioOSECAC',
          )
 
@@ -27,9 +23,6 @@ class DoctorForm(forms.ModelForm):
             'nombre': 'Nombre',
             'apellidos': 'Apellido',
             'especialidad': 'Especialidades',
-            'telefono' : 'Teléfono',
-            'domicilio': 'domicilio',
-            'email': 'E-mail',
             'convenioOSECAC': '¿Tiene convenio con OSECAC?',
 
          }
@@ -42,9 +35,6 @@ class DoctorForm(forms.ModelForm):
                   'apellidos': forms.TextInput(attrs={'class': 'form-control'}),
                   'trabaja_en': forms.Select(attrs={'class': 'form-control'}),
                   'especialidad': forms.CheckboxSelectMultiple(),
-                  'telefono': forms.TextInput(attrs={'class': 'form-control'}),
-                  'domicilio': forms.TextInput(attrs={'class': 'form-control'}),
-                  'email': forms.EmailInput(attrs={'class': 'form-control'}),
                   'convenioOSECAC': forms.Select(attrs={'class': 'form-control'}),
 
             }

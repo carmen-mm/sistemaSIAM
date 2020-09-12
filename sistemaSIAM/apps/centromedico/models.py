@@ -8,7 +8,7 @@ from apps.doctores.models import Especialidad, Doctor
 
 class CentroMedico (models.Model):
     class Meta:
-        db_table ='Centros medicos'
+        db_table ='CentrosMedicos'
         verbose_name_plural='Centros médicos'
         ordering = ['-razonSocial']
     #Atributos
@@ -21,7 +21,12 @@ class CentroMedico (models.Model):
     #Relaciones
     localidad = models.ForeignKey(Localidad, null=False, blank=False, on_delete=models.CASCADE)
     especialidades = models.ManyToManyField(Especialidad)
-    doctores = models.ManyToManyField(Doctor,null=True, blank=True)
+    doctores = models.ManyToManyField(Doctor, blank=True)
+
+    def save(self, *args, **kwargs):
+        self.razonSocial = (self.razonSocial).upper()
+        self.domicilio = (self.domicilio).upper()
+        return super(CentroMedico, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.razonSocial

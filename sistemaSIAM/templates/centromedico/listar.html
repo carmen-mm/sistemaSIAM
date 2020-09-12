@@ -29,7 +29,17 @@
                                          <td>{{ centromedico.e_mail }}</td>
                                          <td><a class="btn btn-primary" href="{% url 'centromedico:modificarCM' centromedico.id %}">modificar</a></td>
                                      </tr>
-
+                            <!--Mostrar todas las especialidades de un centromedico
+                                     <tr> {% for espe in centromedico.especialidades.all %}
+                                         <tr><ol>{{ espe.nombre }}</ol> </tr>
+                                                {% endfor %}
+                                     </tr>
+                                 Mostrar todas los doctores de un centromedico
+                                     <tr> {% for d in centromedico.doctores.all %}
+                                         <tr><ol>{{ d.nombre }} {{ d.apellidos }}</ol> </tr>
+                                                {% endfor %}
+                                     </tr>
+                              -->
 
                             {% endfor %}
                     </table>

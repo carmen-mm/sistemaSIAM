@@ -10,7 +10,7 @@
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-                                <tr><th>CENTRO MEDICO</th><th>BENEFICIARIO</th><th>DOCTOR TRATANTE</th><th>MOTIVO DX</th><th>FECHA INGRESO</th><th>ACCIONES</th></tr>
+                                <tr><th>CENTRO MEDICO</th><th>BENEFICIARIO</th><th>DOCTOR TRATANTE</th><th>MOTIVO DX</th><th>FECHA INGRESO</th><th>ESTADO</th><th>ACCIONES</th></tr>
                         </thead>
                             {% for internacion in object_list %}
                                 <tr>
@@ -19,6 +19,11 @@
                                     <td> {{ internacion.doctorTratante }} </td>
                                     <td> {{ internacion.diagnostico }} </td>
                                     <td> {{ internacion.fecha_ingreso }} </td>
+                                    {% if internacion.fecha_egreso %}
+                                        <td> ALTA</td>
+                                        {% else %}
+                                            <td> INTERNADO</td>
+                                    {% endif%}
                                     <td><a class="btn btn-primary" href="{% url 'internacion:modificar' internacion.id %}">modificar</a>
                                 </tr>
                             {% endfor %}

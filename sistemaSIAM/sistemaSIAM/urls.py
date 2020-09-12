@@ -25,6 +25,7 @@ urlpatterns = [
     path('doctores/', include('apps.doctores.urls')),
     path('centromedico/', include('apps.centromedico.urls')),
     path('internacion/', include('apps.solicitud_internacion.urls')),
+    path('cirugia/', include('apps.solicitud_cirugia.urls')),
     path('novedades/', include('apps.novedades.urls')),
     path('usuario/', include('apps.usuario.urls')),
     path('accounts/login/', LoginView.as_view(template_name='login.html')),

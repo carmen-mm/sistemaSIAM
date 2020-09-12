@@ -45,6 +45,7 @@
 					<img src="{% static 'assets/avatar/Avatar.png' %}" class="img-fluid" alt="Avatar">
 					<figcaption class="roboto-medium text-center">
 						USUARIO: {{user.username | upper }} <br><small class="roboto-condensed-light">GRUPO DE USUARIO</small>
+					<br>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -154,7 +155,7 @@
 					</div>
 				</a>
 
-				<a href="" class="tile">
+				<a href="{% url 'practicasMedicas:detalle'%}" class="tile">
 					<div class="tile-tittle">AMBULATORIAS</div>
 					<div class="tile-icon">
 						<i class="fas fa-clipboard-list fa-fw"></i>
@@ -185,10 +186,17 @@
 
 					</div>
 				</a>
+				<br>
 				<a href="{% url 'novedades:mostrarN'%}" class="tile">
 					<div class="tile-tittle"> NOVEDADES</div>
 					<div class="tile-icon">
 						 <i class="fas fa-bell fa-fw"></i>
+					</div>
+				</a>
+				<a href="{% url 'usuario:registrar'%}" class="tile">
+					<div class="tile-tittle"> USUARIOS</div>
+					<div class="tile-icon">
+						 <i class="fas fa-user fa-fw"></i>
 					</div>
 				</a>
 			{% endblock %}
@@ -230,7 +238,7 @@
 	<!--=============================================
 	=            Include JavaScript files           =
 	==============================================-->
-	<!-- jQuery V3.4.1 -->
+	<!-- jQuery V3.4.1-->-->
 	<script src="{% static  'js/jquery-3.4.1.min.js' %}" ></script>
 
 	<!-- popper -->
@@ -246,7 +254,7 @@
 	<script src="{% static 'js/main.js' %}" ></script>
 
 
-    <!--<script src="{% static 'js/jquery-1.6.1.js' %}"> </script>  &lt;!&ndash; CDN - Source version &ndash;&gt;-->
+    <!-- &lt;!&ndash; CDN - Source version &ndash;&gt;-->
 	<!-- Bootstrap V4.3 -->
 	<script src="{% static 'js/bootstrap.min.css' %}"> </script>
 
@@ -325,6 +333,10 @@
 	});
 
 </script>
+
+
+
+
 
 </body>
 

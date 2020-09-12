@@ -10,28 +10,29 @@
            <div class="container-fluid">
                 <div class="table-responsive">
                         {{ form.non_field_errors }}
-                         <!-- La factura -->
+                         <!--  -->
                         <table class="table table-dark table-sm">
                             <thead>
 							<tr class="text-center roboto-medium">
-                                <tr><th>N° PEDIDO</th><th>FECHA</th><th>NOMBRE</th>
+                                <tr>
+                                <th>N° PEDIDO</th><th>FECHA</th><th>NOMBRE</th>
                         </thead>
                         <tr>
-                            <td>{{ form.id }}</td>
-                            <td>{{ form.idPedido }}</td>
+                            {{ form.id }}
+                             <td>{{ form.idPedido }}</td>
                             <td>{{ form.fecha_ingreso }}</td>
-                            <td>{{ form.beneficiario.dni }}</td>
+                            <td>{{ form.beneficiario }}</td>
                         </tr>
                             <!-- Los items -->
-                            {{ formset.management_form }}
+                        {{ formset.management_form }}
                             {% for form in formset %}
                                 <tr>{{ form.non_field_errors }}
                                     {{ form.id }}
                                     <td><label class="bmd-label-floating">Práctica</label> {{ form.practicas }}</td>
                                     <td><label class="bmd-label-floating">Doctor</label> {{ form.doctores }}</td>
-                                    <td><label class="bmd-label-floating">Diagnóstico</label> {{ form.diagnosticos }}</td>
                                     <td><label class="bmd-label-floating">Coseguro $ </label> {{ form.importeCoseguro }}</td>
                                     <td><label class="bmd-label-floating">Estado</label> {{ form.autorizado }}</td>
+                                    <td><label class="bmd-label-floating">Obs</label> {{ form.observaciones }}</td>
                                 </tr>
                             {% endfor %}
                         </table>

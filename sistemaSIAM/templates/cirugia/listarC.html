@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Listado cirugías{% endblock %}
+
+{% block content1 %}
+<div class="full-box">
+<h2 align="left">cirugías</h2>
+    <div class="container-fluid">
+				<div class="table-responsive">
+					<table class="table table-dark table-sm">
+						<thead>
+							<tr class="text-center roboto-medium">
+                                <tr>
+                                    <th>FECHA INGRESO</th>
+                                    <th>BENEFICIARIO</th>
+                                    <th>CENTRO MEDICO</th>
+                                    <th>DOCTOR TRATANTE</th>
+                                    <th>MOTIVO</th>
+                                    <th>ESTADO CLAVE</th>
+                                    <th>OBSERVACIONES</th>
+                                    <th>ACCIONES</th></tr>
+                        </thead>
+                            {% for c in object_list %}
+                                <tr>
+                                    <td>{{ c.fecha_ingreso }}</td>
+                                    <td>{{ c.beneficiario }} </td>
+                                    <td> {{ c.centromedico }} </td>
+                                    <td> {{ c.doctor }} </td>
+                                    <td> {{ c.cirugia }} </td>
+                                    <td> {{ c.estado_clave }} </td>
+                                    <td> {{ c.observaciones }} </td>
+                                    <td><a class="btn btn-primary" href="{% url 'internacion:modificar' internacion.id %}">modificar</a>
+                                </tr>
+                            {% endfor %}
+                    </table>
+                </div>
+    </div>
+</div>
+{% endblock %}

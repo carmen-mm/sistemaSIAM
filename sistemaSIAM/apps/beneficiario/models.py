@@ -35,7 +35,12 @@ class Beneficiario(models.Model):
     #Relaciones
     localidad = models.ForeignKey(Localidad, on_delete=models.CASCADE)
 
+    def save(self, *args, **kwargs):
+        self.nombre = (self.nombre).upper()
+        self.apellidos = (self.apellidos).upper()
+        return super(Beneficiario, self).save(*args, **kwargs)
+
     def __str__(self):
-      cadena = self.apellidos +" "+self.nombre
+      cadena = self.apellidos + " " + self.nombre + " - " + self.localidad.nombre
       return cadena
 

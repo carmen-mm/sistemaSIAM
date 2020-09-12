@@ -1,8 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.forms import formset_factory, modelformset_factory
-from django.forms import inlineformset_factory
-from django.views.generic.edit import FormView
 from django.forms import inlineformset_factory
 from apps.pedido_ambulatorio.forms import PedidoAmbulatorioForm, DetallesForm
 from django.views.generic import ListView
@@ -12,7 +9,7 @@ from apps.pedido_ambulatorio.models import Diagnostico, Detalle_PedidoMedico, Pe
 
 
 def index(request):
-  return render(request,'practicasMedicas/index.html')
+  return render(request, 'practicasMedicas/index.html')
 
 
 class DiagnosticoList(ListView):
@@ -21,32 +18,31 @@ class DiagnosticoList(ListView):
     paginate_by = 15
 
 
-
 def Detalle_Pedido(request):
     ItemFormSet = inlineformset_factory(
         Pedido_Ambulatorio,
         Detalle_PedidoMedico,
         form=DetallesForm,
-        fields=('fecha_prescripcion',
-                'autorizado',
-                'importeCoseguro',
-                'pedido',
-                'doctores',
-                'diagnosticos',
-                'practicas',),
-        extra=4
+        # fields=('autorizado',
+        #         'importeCoseguro',
+        #         'observaciones',
+        #         'pedido',
+        #         'doctores',
+        #         'practicas',),
+        extra=2
     )
-    form = PedidoAmbulatorioForm()
-    formset = ItemFormSet()
+    form = PedidoAmbulatorioForm(request.POST or None)
+    formset = ItemFormSet(request.POST or None, instance=form.instance)
     if request.method == 'POST':
-        form = PedidoAmbulatorioForm(request.POST)
-        formset = ItemFormSet(request.POST)
+        # form = PedidoAmbulatorioForm(request.POST)
+        # formset = ItemFormSet(request.POST)
         if form.is_valid() and formset.is_valid():
-            form.save()
+            paf = form.save(commit=False)
+            paf.user = request.user
+            paf.save()
             formset.save()
+            # form.save()
+            # formset.save()
             url = reverse_lazy('centromedico:listarCM')
             return HttpResponseRedirect(url)
-    return render(request, 'practicasMedicas/detallePedido.html', {
-        'form': form,
-        'formset': formset
-    })
+    return render(request, 'practicasMedicas/detallePedido.html', {'form': form, 'formset': formset })

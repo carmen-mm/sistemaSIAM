@@ -23,6 +23,9 @@ class Diagnostico (models.Model):
     class Meta:
         db_table = 'Diagnostico'
         verbose_name_plural = 'Diagnósticos'
+    def save(self, *args, **kwargs):
+        self.nombre = (self.nombre).upper()
+        return super(Diagnostico, self).save(*args, **kwargs)
 
     def __str__(self):
         cadena = self.codigo + "-" + self.nombre
@@ -36,16 +39,16 @@ class Pedido_Ambulatorio(models.Model):
         verbose_name_plural = 'Pedidos ambulatorios'
 
     #Atributos del pedido
-    idPedido = models.IntegerField(default=None)
+    idPedido = models.IntegerField()
     fecha_ingreso = models.DateField(default=datetime.now)
 
     # Relaciones
-    beneficiario = models.ForeignKey(Beneficiario, on_delete=models.CASCADE, null=True, blank=True)
+    beneficiario = models.ForeignKey(Beneficiario, on_delete=models.CASCADE)
 
 
 class Detalle_PedidoMedico(models.Model):
     class Meta:
-        db_table = 'Detalle_PedidoMedico'
+        db_table = 'DetallePedidoMedico'
         verbose_name_plural = 'Detalles'
 
     estado_CHOICES = (
@@ -53,15 +56,14 @@ class Detalle_PedidoMedico(models.Model):
             ('R', 'RECHAZADO',),
             ('A', 'AUTORIZADO'),
         )
-    fecha_prescripcion = models.DateField(null=True, blank=True)
     autorizado = models.CharField(max_length=1, choices=estado_CHOICES)
     importeCoseguro = models.FloatField(blank=True, null=True, verbose_name='Importe Coseguro')
+    observaciones = models.TextField(max_length=200, blank=True, null=True)
 
     #Relaciones
     pedido = models.ForeignKey(Pedido_Ambulatorio, on_delete=models.CASCADE)
-    doctores = models.ForeignKey(Doctor, on_delete=models.CASCADE, null=True, blank=True)
-    diagnosticos = models.ForeignKey(Diagnostico, on_delete=models.CASCADE, null=True, blank=True)
-    practicas = models.ForeignKey(Practica_Medica, on_delete=models.CASCADE, null=True, blank=True)
+    doctores = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    practicas = models.ForeignKey(Practica_Medica, on_delete=models.CASCADE)
 
 
 

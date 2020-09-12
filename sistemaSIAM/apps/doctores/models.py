@@ -1,5 +1,5 @@
 from django.db import models
-#from apps.centromedico.models import CentroMedico
+
 
 # Create your models here.
 class Especialidad (models.Model):
@@ -20,12 +20,9 @@ class Doctor (models.Model):
             models.UniqueConstraint(fields=['matriculaMP', 'matriculaME'], name='matricula')
         ]
     convenio_CHOICES = (
-        ('S', 'Con Convenio',),
-        ('N', 'Sin Convenio',),)
+        ('SI', 'Con Convenio',),
+        ('NO', 'Sin Convenio',),)
 
-    consultorio_CHOICES = (
-        ('CP', 'consultorio propio',),
-        ('CM', 'centro médico',),)
 
     #Atributos
     matriculaMP = models.IntegerField(verbose_name='Matrícula Provincial')
@@ -33,16 +30,15 @@ class Doctor (models.Model):
     cuit = models.CharField(primary_key=True, max_length=13, help_text='Ej:11-12345678-0')
     nombre = models.CharField(max_length=30)
     apellidos = models.CharField(max_length=30)
-    trabaja_en = models.CharField(max_length=2, choices=consultorio_CHOICES)
-    telefono = models.CharField(max_length=30, verbose_name='Teléfono', blank=True, null=True)
-    domicilio = models.CharField(max_length=30, blank=True, null=True)
-    email = models.EmailField(max_length=30, verbose_name='E-mail', help_text='Ej: hola@ejemplo.com', blank=True, null=True)
-    convenioOSECAC = models.CharField(max_length=1, choices=convenio_CHOICES, blank=False, null=False)
+    convenioOSECAC = models.CharField(max_length=2, choices=convenio_CHOICES)
 
     #Relaciones
     especialidad = models.ManyToManyField(Especialidad)
 
-
+    def save(self, *args, **kwargs):
+        self.nombre = (self.nombre).upper()
+        self.apellidos = (self.apellidos).upper()
+        return super(Doctor, self).save(*args, **kwargs)
     def __str__(self):
         cadena = self.apellidos + " " + self.nombre
         return cadena

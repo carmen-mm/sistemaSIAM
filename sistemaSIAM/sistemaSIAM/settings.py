@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'apps.doctores',
     'apps.localidad_atencion',
     'apps.pedido_ambulatorio',
-  # 'apps.solicitud_cirugia',
+    'apps.solicitud_cirugia',
     'apps.solicitud_internacion',
     'apps.usuario',
     'wkhtmltopdf',
@@ -90,7 +90,7 @@ DATABASES = {
        # 'ENGINE': 'django.db.backends.sqlite3',
        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',  # 'ENGINE': 'django.db.backends.postgresql_psycopg2'
-        'NAME': 'siam',
+        'NAME': 'BDtesis',
         'USER': 'postgres',
         'PASSWORD': 'admin',
         'HOST': 'localhost',

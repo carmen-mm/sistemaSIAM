@@ -81,7 +81,7 @@ class ReporteDoctores(View):
         # Creamos una tupla de encabezados para nuestra tabla
         encabezados = ('NOMBRE', 'DOMICILIO', 'TELEFONO', 'CONV')
         # Creamos una lista de tuplas que van a contener a las personas
-        detalles = [(doctor.apellidos + doctor.nombre, doctor.domicilio, doctor.telefono, doctor.convenioOSECAC) for doctor in Doctor.objects.all()]
+        detalles = [(doctor.apellidos + doctor.nombre, doctor.convenioOSECAC) for doctor in Doctor.objects.all()]
         # Establecemos el tamaño de cada una de las columnas de la tabla
         detalle_orden = Table([encabezados] + detalles, colWidths=[5 * cm, 5 * cm, 5 * cm, 2 * cm])
         # Aplicamos estilos a las celdas de la tabla
