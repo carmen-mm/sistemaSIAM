@@ -5,6 +5,11 @@
 {% block content1 %}
 <div class="full-box">
 <h2 align="left">Listado Pedidos </h2>
+    <form method="get" action="{% url 'practicasMedicas:listarP' %}">
+        {% csrf_token %}
+        <p>Pedidos: <input type="text" name="filter"/></p>
+        <p><input type="submit" name="submit" value="submit"/></p>
+    </form>
     <div class="container-fluid">
 				<div class="table-responsive">
 					<table class="table table-dark table-sm">

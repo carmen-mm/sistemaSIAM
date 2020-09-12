@@ -44,6 +44,22 @@ class PedidosListar(ListView):
     template_name = 'practicasMedicas/listar_pedidos.html'
     paginate_by = 15
 
+    def get_queryset(self):
+        filter_val = self.request.GET.get('filter', '')
+        if filter_val=='':
+            new_context = Pedido_Ambulatorio.objects.all()
+        else:
+            new_context = Pedido_Ambulatorio.objects.filter(
+                idPedido=filter_val,
+            )
+        return new_context
+
+
+    def get_context_data(self, **kwargs):
+        context = super(PedidosListar, self).get_context_data(**kwargs)
+        context['filter'] = self.request.GET.get('filter', '')
+        return context
+
 class PedidoModificar(UpdateView):
     model = Pedido_Ambulatorio
     form_class = PedidoAmbulatorioForm
