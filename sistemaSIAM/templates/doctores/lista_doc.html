@@ -13,9 +13,6 @@
 
                                 <th align="left">MP</th>
                                 <th align="left">NOMBRE</th>
-                                <th align="left">DOMICILIO</th>
-                                <th align="left">TELEFONO</th>
-                                <th align="left">EMAIL</th>
                                 <th align="left">CONVENIO</th>
                                 <th align="left">ACCIONES</th>
                             </tr>
@@ -30,11 +27,9 @@
                                          <td><ul>{{ espe.nombre }}</ul> </td>
                                                 {% endfor %} -->
 
-                                     <!--    <td>{{ doctor.domicilio }}</td>
-                                         <td>{{ doctor.telefono }}</td>
-                                         <td>{{ doctor.email }}</td> -->
+
                                          <td>{{ doctor.convenioOSECAC }}</td>
-                                         <td><a class="btn btn-primary" href="#">modificar</a>
+                                         <td><a class="btn btn-primary" href="{% url 'doctores:modificar' doctor.cuit %}">modificar</a>
                                              <a class="btn btn-primary" href="#">eliminar</a></td>
                                      </tr>
 

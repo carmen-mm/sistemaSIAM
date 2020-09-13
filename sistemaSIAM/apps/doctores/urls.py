@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
-from apps.doctores.views import EspecialidadList, DoctoresList, DoctorNuevo, ReporteDoctores
+from apps.doctores.views import EspecialidadList, DoctoresList, DoctorNuevo, ReporteDoctores, DoctorModificar
 
 # en urlpatterns se listan todas las urls de las vistas de la app doctores
 app_name = "doctores"
@@ -10,4 +10,5 @@ urlpatterns = [
    path('listarDoc/', login_required(DoctoresList.as_view()), name='listarDoc'),
    path('nuevoDoc/', login_required(DoctorNuevo.as_view()), name='nuevoDoc'),
    path('reporteDoc/', ReporteDoctores.as_view(), name='reporteDoc'),
+   path('modificar/<str:pk>', DoctorModificar.as_view(), name='modificar'),
 ]

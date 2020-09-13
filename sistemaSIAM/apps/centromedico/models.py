@@ -21,7 +21,7 @@ class CentroMedico (models.Model):
     #Relaciones
     localidad = models.ForeignKey(Localidad, null=False, blank=False, on_delete=models.CASCADE)
     especialidades = models.ManyToManyField(Especialidad)
-    doctores = models.ManyToManyField(Doctor, blank=True)
+    doctores = models.ManyToManyField(Doctor, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         self.razonSocial = (self.razonSocial).upper()

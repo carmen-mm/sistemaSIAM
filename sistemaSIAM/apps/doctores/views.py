@@ -8,9 +8,10 @@ from reportlab.lib.units import cm
 from reportlab.lib import colors
 
 from django.urls import reverse_lazy
-from django.views.generic import View, ListView, CreateView
+from django.views.generic import View, ListView, CreateView, UpdateView
 
 from apps.doctores.models import Especialidad, Doctor
+from apps.centromedico.models import CentroMedico
 from apps.doctores.forms import DoctorForm
 
 # Create your views here.
@@ -42,6 +43,29 @@ class DoctorNuevo(CreateView):
 
     #Luego de crear un nuevo Doctor nos redirigimos a la lista de doctores
     success_url = reverse_lazy('doctores:listarDoc')
+
+class DoctorModificar(UpdateView):
+    model = Doctor
+    form_class = DoctorForm
+    template_name = 'doctores/nuevo.html'
+    success_url = reverse_lazy('doctores:listarDoc')
+
+
+class DoctorModificar(UpdateView):
+    model = Doctor
+    form_class = DoctorForm
+    template_name = 'doctores/nuevo.html'
+    success_url = reverse_lazy('doctores:listarDoc')
+
+    def get_context_data(self, **kwargs):
+        context = super(DoctorModificar, self).get_context_data(**kwargs)
+        direcciones = "DIRECCIONES: "
+        for cm in CentroMedico.objects.all():
+            for doc in cm.doctores.values():
+                if doc['cuit'] == context['doctor'].cuit:
+                    direcciones += " | " + cm.razonSocial + " - " + cm.domicilio + " - " + cm.telefono
+        context['direcciones'] = direcciones
+        return context
 
 class ReporteDoctores(View):
     pdf = canvas.Canvas("listado_doctores.pdf")
