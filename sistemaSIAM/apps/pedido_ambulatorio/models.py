@@ -58,7 +58,7 @@ class Detalle_PedidoMedico(models.Model):
         )
     autorizado = models.CharField(max_length=1, choices=estado_CHOICES)
     importeCoseguro = models.FloatField(blank=True, null=True, verbose_name='Importe Coseguro')
-    observaciones = models.TextField(max_length=200, blank=True, null=True)
+    observaciones = models.TextField(max_length=100, blank=True, null=True)
 
     #Relaciones
     pedido = models.ForeignKey(Pedido_Ambulatorio, on_delete=models.CASCADE)

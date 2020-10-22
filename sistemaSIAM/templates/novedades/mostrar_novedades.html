@@ -10,7 +10,9 @@
 					<table border="1" class="table table-dark table-sm">
 						<thead align="left">
 							<tr class="text-center roboto-medium">
-                                <tr><th>FECHA</th><th>TITULO</th><th>MENSAJE</th><th>ACCIONES</th></tr>
+                                <tr><th>FECHA</th><th>TITULO</th><th>MENSAJE</th>
+                                {% if perms.novedades.change_novedades %}<th>ACCIONES</th>{% endif %}
+                            </tr>
                         </thead>
                             {% for n in object_list %}
 
@@ -18,16 +20,19 @@
                                     <td align="left">{{ n.fecha }}</td>
                                     <td align="left">{{ n.titulo }} </td>
                                     <td align="left">{{ n.mensaje }}</td>
+                                    {% if perms.novedades.change_novedades %}
                                     <td><a class="btn btn-primary" href="{% url 'novedades:modificarN' n.id %}">modificar</a>
                                         <a class="btn btn-primary" href="{% url 'novedades:eliminarN' n.id %}">eliminar</a> </td>
-
+                                    {% endif %}
 
                                </tr>
                             {% endfor %}
                     </table>
                 </div>
     </div>
+        {% if perms.novedades.add_novedades %}
         <a class="btn btn-primary" href="{% url 'novedades:subir' %}">SUBIR NUEVA NOVEDAD</a>
+        {% endif%}
         <a class="btn btn-primary" href="{% url 'practicasMedicas:index' %}">VOLVER</a>
 </div>
 {% endblock %}

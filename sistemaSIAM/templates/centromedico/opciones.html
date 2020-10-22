@@ -3,8 +3,10 @@
 {% block title %}Centros Médicos y Doctores{% endblock %}
 
 {% block content1 %}
-        <a class="btn btn-primary" href="{% url 'doctores:nuevoDoc' %}">NUEVO DOCTOR</a>
-        <a class="btn btn-primary" href="{% url 'doctores:listarDoc' %}">LISTADO DOCTORES</a>
-        <a class="btn btn-primary" href="{% url 'centromedico:nuevo' %}">NUEVO CENTRO MEDICO</a>
-        <a class="btn btn-primary" href="{% url 'centromedico:listarCM' %}">LISTADO CENTRO MEDICO</a>
+        {% if perms.doctores.add_doctores and perms.centromedico.add_centromedico %}
+                <a class="btn btn-primary" href="{% url 'doctores:nuevoDoc' %}">NUEVO DOCTOR</a>
+                <a class="btn btn-primary" href="{% url 'centromedico:nuevo' %}">NUEVO CENTRO MEDICO</a>
+        {% endif %}
+                <a class="btn btn-primary" href="{% url 'doctores:listarDoc' %}">LISTADO DOCTORES</a>
+                <a class="btn btn-primary" href="{% url 'centromedico:listarCM' %}">LISTADO CENTRO MEDICO</a>
 {% endblock %}

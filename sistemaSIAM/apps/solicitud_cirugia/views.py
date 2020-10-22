@@ -18,3 +18,6 @@ class CirugiaNueva(CreateView):
     form_class = CirugiaForm
     template_name = 'cirugia/registrar_cirugia.html'
     success_url = reverse_lazy('cirugia:listarC')
+
+def Opciones(request):
+  return render(request,'cirugia/opciones.html')

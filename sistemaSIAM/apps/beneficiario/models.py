@@ -1,8 +1,6 @@
 from django.db import models
 from apps.localidad_atencion.models import Localidad
-
 # Modelo para la tabla Beneficiario:
-# Un beneficiario es una persona que está empadronada correctamente en la obra social
 
 class Beneficiario(models.Model):
     class Meta:
@@ -13,7 +11,6 @@ class Beneficiario(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['tipoDNI', 'dni'], name='documento')
         ]
-
     AFILIADO_CHOICES = (
         ('S', 'AFILIADO'),
         ('N', 'NO AFILIADO'),

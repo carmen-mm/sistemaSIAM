@@ -1,11 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html style="min-height: 100%; position: relative;">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href=" {% static 'css/normalize.css' %}">
+
+	<!-- CSS datepicker -->
+	<link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
 
 	<!-- Bootstrap Material Design V4.0 -->
 	<link rel="stylesheet" href="{% static 'css/bootstrap-material-design.min.css' %}">
@@ -29,6 +32,7 @@
 </head>
 
     <!--{% block content %} {% endblock %} -->
+<body>
 	<!-- Main container -->
 	<main class="full-box main-container">
 {% block marco %}
@@ -38,13 +42,31 @@
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<i class="far fa-times-circle show-nav-lateral"></i>
-					<img src="{% static 'assets/avatar/Avatar.png' %}" class="img-fluid" alt="Avatar">
+						<i class="far fa-times-circle show-nav-lateral"></i>
 					<figcaption class="roboto-medium text-center">
-						USUARIO: {{user.username | upper }} <br><small class="roboto-condensed-light">GRUPO DE USUARIO</small>
+
+					 {% for group in  request.user.groups.all %}
+							{%  if 'personal' == group.name %}
+								<img src="{% static 'assets/avatar/Avatar.png' %}" class="img-fluid" alt="Avatar">
+								PERFIL: PERSONAL
+								{% elif 'gerente' == group.name %}
+									<img src="{% static 'assets/avatar/gerente.png' %}" class="img-fluid" alt="Avatar">
+									PERFIL: GERENTE
+									{% elif 'administrador' == group.name %}
+										<img src="{% static 'assets/avatar/sistemas.png' %}" class="img-fluid" alt="Avatar">
+										PERFIL: ADMINISTRADOR
+										{% elif 'medicoauditor' == group.name %}
+											<img src="{% static 'assets/avatar/auditor.png' %}" class="img-fluid" alt="Avatar">
+											PERFIL: MEDICO AUDITOR
+
+							{% endif %}
+					 {% endfor %}
 					<br>
+					USUARIO: {{user.username | upper }} <br><small class="roboto-condensed-light"></small>
+
 					</figcaption>
 				</figure>
+
 				<div class="full-box nav-lateral-bar"></div>
 				<!-- Nav lateral // ITEMS-->
                 <nav class="full-box nav-lateral-menu">
@@ -55,17 +77,6 @@
 
 						<li>
                             <a href="#"> &nbsp; Beneficiarios</a>
-							<ul>
-								<li>
-									<a href="client-new.html"> &nbsp; Agregar Cliente</a>
-								</li>
-								<li>
-									<a href="client-list.html"> &nbsp; Lista de clientes</a>
-								</li>
-								<li>
-									<a href="client-search.html"> &nbsp; Buscar cliente</a>
-								</li>
-							</ul>
 						</li>
 
 						<li>
@@ -100,18 +111,20 @@
 								</li>
 							</ul>
 						</li>
-
 						<li>
-							<a href="#" class="nav-btn-submenu"> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu">&nbsp; Internaciones <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
-									<a href="user-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo usuario</a>
+									<a href="reservation-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo préstamo</a>
 								</li>
 								<li>
-									<a href="user-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de usuarios</a>
+									<a href="reservation-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de préstamos</a>
 								</li>
 								<li>
-									<a href="user-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar usuario</a>
+									<a href="reservation-search.html"><i class="fas fa-search-dollar fa-fw"></i> &nbsp; Buscar préstamos</a>
+								</li>
+								<li>
+									<a href="reservation-pending.html"><i class="fas fa-hand-holding-usd fa-fw"></i> &nbsp; Préstamos pendientes</a>
 								</li>
 							</ul>
 						</li>
@@ -141,10 +154,11 @@
 			</nav>
 {% endblock %}
 
-			<!-- Content -->
+			<!-- Content Central-->
 			<div class="full-box tile-container">
+
 			{% block content1 %}
-			<!--	<a href="/insertar" class="tile"> -->
+
 				<a href="{% url 'beneficiario:opciones'%}" class="tile">
 					<div class="tile-tittle"> BENEFICIARIOS</div>
 					<div class="tile-icon">
@@ -160,7 +174,7 @@
 					</div>
 				</a>
 
-				<a href="" class="tile">
+				<a href="{% url 'cirugias:opcionesC' %}" class="tile">
 					<div class="tile-tittle">CIRUGIAS</div>
 					<div class="tile-icon">
 						<i class="fas fa-ambulance fa-fw"></i>
@@ -190,12 +204,7 @@
 						 <i class="fas fa-bell fa-fw"></i>
 					</div>
 				</a>
-				<a href="{% url 'usuario:registrar'%}" class="tile">
-					<div class="tile-tittle"> USUARIOS</div>
-					<div class="tile-icon">
-						 <i class="fas fa-user fa-fw"></i>
-					</div>
-				</a>
+
 			{% endblock %}
 			</div>
 
@@ -218,22 +227,18 @@
 {% endblock %}
 
 		</section>
-
+	</main>
+</body>
 <footer style="position:absolute; left: 0; bottom: 0px; width: 100%; min-height: 75px; max-height: 75px; height: 7%;">
     <hr />
     <p style="font-size:10pt;padding-left:1%; padding-right:1%">
         <span style="float:right">  * 2020 * Ante cualquier consulta o problemas con el sitio enviar e-mail a admin@gmail.com</span>
     </p>
 </footer>
-	</main>
-
-
-
-<!--{% block footer %}{% endblock %} -->
 
 
 	<!--=============================================
-	=            Include JavaScript files           =
+	=           Archivos JavaScript			         =
 	==============================================-->
 	<!-- jQuery V3.4.1-->
 	<script src="{% static  'js/jquery-3.4.1.min.js' %}" ></script>
@@ -254,6 +259,8 @@
 	<!-- Bootstrap V4.3 -->
 	<script src="{% static 'js/bootstrap.min.js' %}"> </script>
 
+	<!-- datepicker -->
+	<script type="text/javascript" src="{% static 'js/jquery-ui.js' %}" ></script>
 	<script>
 	$(document).ready(function () {
 
@@ -329,7 +336,6 @@
 	});
 
 </script>
-
 
 
 

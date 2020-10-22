@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'apps.solicitud_cirugia',
     'apps.solicitud_internacion',
     'apps.usuario',
-    'wkhtmltopdf',
     'apps.novedades',
 
 ]

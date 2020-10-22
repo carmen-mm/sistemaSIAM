@@ -8,7 +8,7 @@
  <fieldset>
 		<legend align="left"><i class="fas fa-user-md"></i> &nbsp; Información básica - Nuevo doctor</legend>
            <div class="container-fluid">
-                <div >  <!--class="table-responsive" -->
+                <div >
 					<table class="table table-dark table-sm">
 						<tr>
                            <td> <label class="bmd-label-floating">MATRICULA PROVINCIAL</label>
@@ -25,21 +25,18 @@
                              <td><label class="bmd-label-floating">CUIT</label>
                         {{ form.cuit}}</td>
                         </tr>
+
                         <tr>
-                         <!--   <td> <label class="bmd-label-floating">TRABAJA EN</label>{{ form.trabaja_en}}</td>
-                            <td> <label class="bmd-label-floating">DOMICILIO</label>{{ form.domicilio}}</td>
-                            <td><label class="bmd-label-floating">TELEFONOS</label>{{ form.telefono}}</td>
-                            <td><label class="bmd-label-floating">E-MAIL</label>{{ form.email}} </td> -->
-                        </tr>
-                        <tr>
-                            <td align="left"> <label class="bmd-label-floating">ESPECIALIDADES</label>{{ form.especialidad}}</td>
+                            <td align="left"> <label>ESPECIALIDADES</label>{{ form.especialidad}}</td>
                             <td align="left"> {{ direcciones }} </td>
                         </tr>
                     </table>
                 </div>
 
            </div>
-    <button type="submit">Guardar </button>
+    <button type="reset" class="btn btn-raised btn-secondary btn-sm"> Limpiar<div class="ripple-container"></div></button>
+    <button type="submit" class="btn btn-raised btn-info btn-sm"> Guardar <div class="ripple-container"></div></button>
+
  </fieldset>
 </form>
 {% endblock %}

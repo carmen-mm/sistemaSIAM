@@ -2,15 +2,17 @@
 
 {% block title %}Cirugía{% endblock %}
 
+
 {% block content1 %}
 <form method="post">
     {%  csrf_token %}
  <fieldset>
-		<legend align="left"><i class="fas fa-laptop-medical fa-fw"></i> &nbsp; Información básica - Registrar nueva cirugía</legend>
+   		<legend align="left"><i class="fas fa-laptop-medical fa-fw"></i> &nbsp; Información básica - Registrar nueva cirugía</legend>
            <div class="container-fluid">
                 <div class="table-responsive">
 					<table class="table table-dark table-sm">
 						<tr>
+                            <td><label class="bmd-label-floating">Fecha Recepción</label>{{ form.fecha_ingreso}}</td>
                             <td><label class="bmd-label-floating">Beneficiario</label>{{ form.beneficiario}} </td>
                         </tr>
                         <tr>
@@ -23,7 +25,7 @@
                             <td> <label class="bmd-label-floating">Motivo cirugía</label>{{ form.cirugia}}</td>
                         </tr>
                         <tr>
-                            <td><label class="bmd-label-floating">Fecha ingreso</label>{{ form.fecha_ingreso}}</td>
+
                             <td><label class="bmd-label-floating">Fecha cirugía</label>{{ form.fecha_cirugia}}</td>
                             <td><label class="bmd-label-floating">Tipo cirugía</label>{{ form.tipo_cirugia}}</td>
                             <td><label class="bmd-label-floating">Observaciones</label>{{ form.observaciones}}</td>
@@ -31,7 +33,7 @@
                         </tr>
                         <tr>
                             <td><label class="bmd-label-floating">¿Requiere material?</label>{{ form.material}} </td>
-                            <td><label class="bmd-label-floating">¿Tiene prequirurgicos?</label>{{ form.tipo2_internacion}} </td>
+                            <td><label class="bmd-label-floating">¿Tiene prequirurgicos?</label>{{ form.prequirurgicos}} </td>
                              <td><label class="bmd-label-floating">Estado</label>{{ form.estado_clave}} </td>
                             <td><label class="bmd-label-floating">Importe Coseguro</label>{{ form.importe_coseguro}} </td>
 
@@ -40,7 +42,8 @@
                 </div>
 
            </div>
-    <button type="submit">Guardar </button>
+    <button type="reset" class="btn btn-raised btn-secondary btn-sm"> Limpiar<div class="ripple-container"></div></button>
+    <button type="submit" class="btn btn-raised btn-info btn-sm"> Guardar <div class="ripple-container"></div></button>
  </fieldset>
 </form>
 {% endblock %}

@@ -14,12 +14,13 @@
                         <table class="table table-dark table-sm">
                             <thead>
 							<tr class="text-center roboto-medium">
-                                <tr>
+
                                 <th>N° PEDIDO</th><th>FECHA</th><th>NOMBRE</th>
+                             </tr>
                         </thead>
                         <tr>
                             {{ form.id }}
-                             <td>{{ form.idPedido }}</td>
+                            <td>{{ form.idPedido }}</td>
                             <td>{{ form.fecha_ingreso }}</td>
                             <td>{{ form.beneficiario }}</td>
                         </tr>
@@ -38,7 +39,8 @@
                         </table>
                 </div>
             </div>
-                    <button type="submit">Guardar</button>
+                    <button type="reset" class="btn btn-raised btn-secondary btn-sm"> Limpiar<div class="ripple-container"></div></button>
+                    <button type="submit" class="btn btn-raised btn-info btn-sm"> Guardar <div class="ripple-container"></div></button>
  </fieldset>
 </form>
 {% endblock %}

@@ -3,6 +3,9 @@
 {% block title %}Beneficiarios{% endblock %}
 
 {% block content1 %}
-        <a class="btn btn-primary" href="{% url 'beneficiario:insertar' %}">NUEVO BENEFICIARIO</a>
-        <a class="btn btn-primary" href="{% url 'beneficiario:listar' %}">LISTADO BENEFICIARIO</a>
+        {% if perms.beneficiario.add_beneficiario%}
+                <a class="btn btn-primary" href="{% url 'beneficiario:insertar' %}">NUEVO BENEFICIARIO</a>
+        {% endif %}
+                <a class="btn btn-primary" href="{% url 'beneficiario:listar' %}">LISTADO BENEFICIARIO</a>
+
 {% endblock %}
