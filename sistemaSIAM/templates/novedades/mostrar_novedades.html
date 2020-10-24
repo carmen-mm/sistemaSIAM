@@ -30,9 +30,10 @@
                     </table>
                 </div>
     </div>
+        <a class="btn btn-raised btn-secondary btn-sm" href="{% url 'practicasMedicas:index' %}">VOLVER</a>
         {% if perms.novedades.add_novedades %}
-        <a class="btn btn-primary" href="{% url 'novedades:subir' %}">SUBIR NUEVA NOVEDAD</a>
+        <a class="btn btn-raised btn-info btn-sm" href="{% url 'novedades:subir' %}">SUBIR NUEVA NOVEDAD</a>
         {% endif%}
-        <a class="btn btn-primary" href="{% url 'practicasMedicas:index' %}">VOLVER</a>
+
 </div>
 {% endblock %}

@@ -80,16 +80,16 @@
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"> &nbsp; Prácticas Ambulatorias <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"> &nbsp; Ambulatorias <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
-									<a href="item-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar item</a>
+									<a href="item-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Pedido</a>
 								</li>
 								<li>
-									<a href="item-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de items</a>
+									<a href="item-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Listado de Pedidos</a>
 								</li>
 								<li>
-									<a href="item-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar item</a>
+									<a href="item-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Pedido</a>
 								</li>
 							</ul>
 						</li>
@@ -98,16 +98,13 @@
 							<a href="#" class="nav-btn-submenu">&nbsp; Cirugías <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
-									<a href="reservation-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo préstamo</a>
+									<a href="reservation-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar cirugía</a>
 								</li>
 								<li>
-									<a href="reservation-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de préstamos</a>
+									<a href="reservation-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de cirugías</a>
 								</li>
 								<li>
-									<a href="reservation-search.html"><i class="fas fa-search-dollar fa-fw"></i> &nbsp; Buscar préstamos</a>
-								</li>
-								<li>
-									<a href="reservation-pending.html"><i class="fas fa-hand-holding-usd fa-fw"></i> &nbsp; Préstamos pendientes</a>
+									<a href="reservation-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar cirugía</a>
 								</li>
 							</ul>
 						</li>
@@ -115,22 +112,38 @@
 							<a href="#" class="nav-btn-submenu">&nbsp; Internaciones <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
-									<a href="reservation-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo préstamo</a>
+									<a href="reservation-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar internación</a>
 								</li>
 								<li>
-									<a href="reservation-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de préstamos</a>
+									<a href="reservation-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de internaciones</a>
 								</li>
 								<li>
-									<a href="reservation-search.html"><i class="fas fa-search-dollar fa-fw"></i> &nbsp; Buscar préstamos</a>
+									<a href="reservation-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar internación</a>
 								</li>
-								<li>
-									<a href="reservation-pending.html"><i class="fas fa-hand-holding-usd fa-fw"></i> &nbsp; Préstamos pendientes</a>
-								</li>
+
 							</ul>
 						</li>
 
 						<li>
-							<a href=""> &nbsp; Centros Médicos</a>
+							<a href="" class="nav-btn-submenu"> &nbsp; Prestadores <i class="fas fa-chevron-down"></i> </a>
+							<ul>
+								<li>
+									<a href=""><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Doctor</a>
+								</li>
+								<li>
+									<a href=""><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Listado de doctores</a>
+								</li>
+								<li>
+									<a href=""><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Centro Médico</a>
+								</li>
+								<li>
+									<a href=""><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Listado de centros médicos</a>
+								</li>
+
+							</ul>
+						</li>
+						<li>
+							<a href="{% url 'novedades:mostrarN'%}"> &nbsp; Novedades </a>
 						</li>
 					</ul>
 				</nav>
@@ -228,14 +241,14 @@
 
 		</section>
 	</main>
-</body>
+
 <footer style="position:absolute; left: 0; bottom: 0px; width: 100%; min-height: 75px; max-height: 75px; height: 7%;">
     <hr />
     <p style="font-size:10pt;padding-left:1%; padding-right:1%">
         <span style="float:right">  * 2020 * Ante cualquier consulta o problemas con el sitio enviar e-mail a admin@gmail.com</span>
     </p>
 </footer>
-
+</body>
 
 	<!--=============================================
 	=           Archivos JavaScript			         =
