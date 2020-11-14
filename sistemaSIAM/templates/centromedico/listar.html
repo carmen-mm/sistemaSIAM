@@ -44,7 +44,8 @@
                             {% endfor %}
                     </table>
                 </div>
-    <a class="btn btn-primary" href="{% url 'centromedico:reporteCM' %}" target="_blank">IMPRIMIR LISTADO</a>
-    <a class="btn btn-primary" href="{% url 'practicasMedicas:index' %}">VOLVER</a>
+    <a class="btn btn-raised btn-secondary btn-sm" role="button" href="{% url 'practicasMedicas:index' %}">VOLVER</a>
+    <a class="btn btn-raised btn-info btn-sm" role="button" href="{% url 'centromedico:reporteCM' %}" target="_blank">IMPRIMIR LISTADO</a>
 </div>
+
 {% endblock %}

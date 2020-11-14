@@ -11,7 +11,7 @@
 						<thead align="left">
 							<tr class="text-center roboto-medium">
                                 <tr><th>FECHA</th><th>TITULO</th><th>MENSAJE</th>
-                                {% if perms.novedades.change_novedades %}<th>ACCIONES</th>{% endif %}
+                                {% if perms.novedades.change_novedades %}<th align="center">ACCIONES</th>{% endif %}
                             </tr>
                         </thead>
                             {% for n in object_list %}

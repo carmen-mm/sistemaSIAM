@@ -4,8 +4,8 @@
 
 {% block content1 %}
         {% if perms.beneficiario.add_beneficiario%}
-                <a class="btn btn-primary" href="{% url 'beneficiario:insertar' %}">NUEVO BENEFICIARIO</a>
+                <a class="btn btn-primary" href="{% url 'beneficiario:insertar' %}">AGREGAR BENEFICIARIO</a>
         {% endif %}
-                <a class="btn btn-primary" href="{% url 'beneficiario:listar' %}">LISTADO BENEFICIARIO</a>
+                <a class="btn btn-primary" href="{% url 'beneficiario:listar' %}">LISTADO DE BENEFICIARIOS</a>
 
 {% endblock %}

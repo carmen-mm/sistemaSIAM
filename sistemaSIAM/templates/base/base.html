@@ -76,20 +76,33 @@
 						</li>
 
 						<li>
-                            <a href="#"> &nbsp; Beneficiarios</a>
+                            <a href="#" class="nav-btn-submenu"> &nbsp; Beneficiarios <i class="fas fa-chevron-down"></i></a>
+							<ul>
+								{% if perms.beneficiario.add_beneficiario%}
+								<li>
+									<a href="{% url 'beneficiario:insertar'%}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Beneficiario</a>
+								</li>
+								{% endif %}
+								<li>
+									<a href="{% url 'beneficiario:listar'%}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Listado de beneficiarios</a>
+								</li>
+
+							</ul>
 						</li>
 
 						<li>
 							<a href="#" class="nav-btn-submenu"> &nbsp; Ambulatorias <i class="fas fa-chevron-down"></i></a>
 							<ul>
+								{% if perms.pedido_ambulatorio.add_pedido_ambulatorio %}
 								<li>
-									<a href="item-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Pedido</a>
+									<a href="{% url 'practicasMedicas:detalle'%}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Pedido</a>
+								</li>
+								{% endif %}
+								<li>
+									<a href="{% url 'practicasMedicas:listarP'%}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Listado de Pedidos</a>
 								</li>
 								<li>
-									<a href="item-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Listado de Pedidos</a>
-								</li>
-								<li>
-									<a href="item-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Pedido</a>
+									<a href=""><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Pedido</a>
 								</li>
 							</ul>
 						</li>
@@ -97,28 +110,32 @@
 						<li>
 							<a href="#" class="nav-btn-submenu">&nbsp; Cirugías <i class="fas fa-chevron-down"></i></a>
 							<ul>
+								{% if perms.solicitud_cirugia.add_solicitud_cirugia %}
 								<li>
-									<a href="reservation-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar cirugía</a>
+									<a href="{% url 'cirugias:nuevaC'%}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar cirugía</a>
+								</li>
+								{% endif %}
+								<li>
+									<a href="{% url 'cirugias:listarC'%}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de cirugías</a>
 								</li>
 								<li>
-									<a href="reservation-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de cirugías</a>
-								</li>
-								<li>
-									<a href="reservation-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar cirugía</a>
+									<a href=""><i class="fas fa-search fa-fw"></i> &nbsp; Buscar cirugía</a>
 								</li>
 							</ul>
 						</li>
 						<li>
 							<a href="#" class="nav-btn-submenu">&nbsp; Internaciones <i class="fas fa-chevron-down"></i></a>
 							<ul>
+								{% if perms.solicitud_internacion.add_internacion %}
 								<li>
-									<a href="reservation-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar internación</a>
+									<a href="{% url 'internacion:nuevaI'%}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar internación</a>
+								</li>
+								{% endif %}
+								<li>
+									<a href="{% url 'internacion:listarI'%}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de internaciones</a>
 								</li>
 								<li>
-									<a href="reservation-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de internaciones</a>
-								</li>
-								<li>
-									<a href="reservation-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar internación</a>
+									<a href=""><i class="fas fa-search fa-fw"></i> &nbsp; Buscar internación</a>
 								</li>
 
 							</ul>
@@ -127,17 +144,21 @@
 						<li>
 							<a href="" class="nav-btn-submenu"> &nbsp; Prestadores <i class="fas fa-chevron-down"></i> </a>
 							<ul>
+								 {% if perms.doctores.add_doctores %}
 								<li>
-									<a href=""><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Doctor</a>
+									<a href="{% url 'doctores:nuevoDoc' %}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Doctor</a>
 								</li>
+								{% endif %}
 								<li>
-									<a href=""><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Listado de doctores</a>
+									<a href="{% url 'doctores:listarDoc' %}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Listado de doctores</a>
 								</li>
+								 {% if perms.centromedico.add_centromedico %}
 								<li>
-									<a href=""><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Centro Médico</a>
+									<a href="{% url 'centromedico:nuevo' %}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Centro Médico</a>
 								</li>
+								{% endif %}
 								<li>
-									<a href=""><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Listado de centros médicos</a>
+									<a href="{% url 'centromedico:listarCM' %}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Listado de centros médicos</a>
 								</li>
 
 							</ul>
@@ -243,9 +264,9 @@
 	</main>
 
 <footer style="position:absolute; left: 0; bottom: 0px; width: 100%; min-height: 75px; max-height: 75px; height: 7%;">
-    <hr />
     <p style="font-size:10pt;padding-left:1%; padding-right:1%">
-        <span style="float:right">  * 2020 * Ante cualquier consulta o problemas con el sitio enviar e-mail a admin@gmail.com</span>
+
+		<span style="float:right" class="swal2-footer">	* 2020 * Ante cualquier consulta o problemas con el sitio enviar e-mail a admin@gmail.com</span>
     </p>
 </footer>
 </body>
@@ -259,6 +280,9 @@
 	<!-- popper -->
 	<script src="{% static 'js/popper.min.js' %}" ></script>
 
+<!-- Bootstrap V4.3 -->
+	<script src="{% static 'js/bootstrap.min.js' %}"> </script>
+
 		<!-- jQuery Custom Content Scroller V3.1.5 -->
 	<script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}" ></script>
 
@@ -269,11 +293,6 @@
 	<script src="{% static 'js/main.js' %}" ></script>
 
 
-	<!-- Bootstrap V4.3 -->
-	<script src="{% static 'js/bootstrap.min.js' %}"> </script>
-
-	<!-- datepicker -->
-	<script type="text/javascript" src="{% static 'js/jquery-ui.js' %}" ></script>
 	<script>
 	$(document).ready(function () {
 
@@ -285,7 +304,7 @@
 
 			console.log(id_afiliado);
 
-			if(id_afiliado == 'N'){
+			if(id_afiliado == 'NO'){
 				$("#id_nroAfiliado").attr('disabled',true);
 			}else{
 				$("#id_nroAfiliado").removeAttr('disabled');

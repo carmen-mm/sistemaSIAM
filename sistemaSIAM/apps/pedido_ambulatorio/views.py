@@ -8,7 +8,7 @@ from apps.pedido_ambulatorio.models import Diagnostico, Detalle_PedidoMedico, Pe
 
 
 def Opciones(request):
-  return render(request,'practicasMedicas/opciones.html')
+  return render(request, 'practicasMedicas/opciones.html')
 
 def index(request):
   return render(request, 'practicasMedicas/index.html')
@@ -25,7 +25,7 @@ def Detalle_Pedido(request):
         Pedido_Ambulatorio,
         Detalle_PedidoMedico,
         form=DetallesForm,
-        extra=2
+        extra=3
     )
     form = PedidoAmbulatorioForm(request.POST or None)
     formset = ItemFormSet(request.POST or None, instance=form.instance)
@@ -75,7 +75,7 @@ class PedidoModificar(UpdateView):
             Pedido_Ambulatorio,
             Detalle_PedidoMedico,
             form=DetallesForm,
-            extra=2
+            extra=3
         )
         if self.request.POST:
             context['formset'] = ItemFormSet(self.request.POST, instance=self.object)

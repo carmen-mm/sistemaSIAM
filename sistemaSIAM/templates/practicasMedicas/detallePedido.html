@@ -6,24 +6,25 @@
 <form method="POST">
   {% csrf_token %}
 <fieldset>
-		<legend align="left"><i class="fas fa-laptop-medical fa-fw"></i> &nbsp; Pedidos Ambulatorios</legend>
+		<legend align="left"><i class="fas fa-laptop-medical fa-fw"></i> &nbsp; Pedidos Ambulatorios </legend>
            <div class="container-fluid">
                 <div class="table-responsive">
                         {{ form.non_field_errors }}
-                         <!--  -->
+
                         <table class="table table-dark table-sm">
                             <thead>
-							<tr class="text-center roboto-medium">
+							    <tr class="text-center roboto-medium">
 
-                                <th>N° PEDIDO</th><th>FECHA</th><th>NOMBRE</th>
-                             </tr>
-                        </thead>
-                        <tr>
+                                    <th>FECHA</th><th>N° PEDIDO</th><th>NOMBRE</th>
+                                </tr>
+                            </thead>
+                         <tr>
                             {{ form.id }}
-                            <td>{{ form.idPedido }}</td>
                             <td>{{ form.fecha_ingreso }}</td>
+                            <td>{{ form.idPedido }}</td>
                             <td>{{ form.beneficiario }}</td>
-                        </tr>
+
+                         </tr>
                             <!-- Los items -->
                         {{ formset.management_form }}
                             {% for form in formset %}

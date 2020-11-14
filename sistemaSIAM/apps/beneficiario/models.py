@@ -12,8 +12,8 @@ class Beneficiario(models.Model):
             models.UniqueConstraint(fields=['tipoDNI', 'dni'], name='documento')
         ]
     AFILIADO_CHOICES = (
-        ('S', 'AFILIADO'),
-        ('N', 'NO AFILIADO'),
+        ('SI', 'AFILIADO'),
+        ('NO', 'NO AFILIADO'),
     )
     tipoDNI_CHOICES = (
         ('DNI', 'DNI'),
@@ -26,7 +26,7 @@ class Beneficiario(models.Model):
     dni = models.IntegerField()
     nombre = models.CharField(max_length=20)
     apellidos = models.CharField(max_length=30)
-    afiliado = models.CharField(max_length=1, choices=AFILIADO_CHOICES)
+    afiliado = models.CharField(max_length=2, choices=AFILIADO_CHOICES)
     nroAfiliado = models.IntegerField(verbose_name='N° Afiliado', blank=True, null=True)
 
     #Relaciones

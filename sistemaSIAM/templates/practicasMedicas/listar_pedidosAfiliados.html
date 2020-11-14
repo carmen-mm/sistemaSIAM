@@ -1,10 +1,10 @@
 {% extends 'base/base.html' %}
 
-{% block title %}Listado Pedidos{% endblock %}
+{% block title %}Beneficiarios afiliados {% endblock %}
 
 {% block content1 %}
 <div class="full-box">
-<h2 align="left">Listado Pedidos </h2>
+<h2 align="left">Listado Pedidos ambulatorios - Beneficiarios Afiliados - {{ d.fecha_ingreso}}</h2>
     <form method="get" action="{% url 'practicasMedicas:listarP' %}">
         {% csrf_token %}
         <p>Pedidos: <input type="text" name="filter"/></p>
@@ -16,13 +16,12 @@
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-                                <tr><th>NRO </th><th>BENEFICIARIO</th><th>FECHA</th><th>ACCIONES</th></tr>
+                                <tr><th>NRO </th><th>BENEFICIARIO</th><th>ACCIONES</th></tr>
                         </thead>
                             {% for d in object_list %}
                                 <tr>
                                     <td>{{ d.idPedido}}</td>
                                     <td>{{ d.beneficiario}} </td>
-                                    <td>{{ d.fecha_ingreso}}</td>
 
                                     <td><a class="btn btn-primary" href="{% url 'practicasMedicas:modificar' d.id %}">modificar</a>
                                 </tr>

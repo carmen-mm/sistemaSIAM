@@ -28,7 +28,7 @@ urlpatterns = [
     path('cirugia/', include('apps.solicitud_cirugia.urls')),
     path('novedades/', include('apps.novedades.urls')),
     path('usuario/', include('apps.usuario.urls')),
-    path('', LoginView.as_view(template_name='login.html')),
+    path('accounts/login/', LoginView.as_view(template_name='login.html')),
     path('logout/', logout_then_login, name='logout'),
 
 ]

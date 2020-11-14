@@ -26,8 +26,9 @@
                     </table>
                 </div>
     </div>
-    <a class="btn btn-primary" href="{% url 'beneficiario:reporte' %}" target="_blank">IMPRIMIR LISTADO</a>
-    <a class="btn btn-primary" href="{% url 'practicasMedicas:index' %}">VOLVER</a>
+    <a class="btn btn-raised btn-secondary btn-sm" role="button" href="{% url 'beneficiario:opciones' %}">VOLVER</a>
+    <a class="btn btn-raised btn-info btn-sm" role="button" href="{% url 'beneficiario:reporte' %}" target="_blank">IMPRIMIR LISTADO</a>
+
 </div>
 
 {% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Cirugías{% endblock %}
+
+{% block content1 %}
+        {% if perms.solicitud_cirugia.add_solicitud_cirugia %}
+                <a class="btn btn-primary" href="{% url 'cirugias:nuevaC' %}">NUEVA CIRUGIA</a>
+        {% endif %}
+                <a class="btn btn-primary" href="{% url 'cirugias:listarC' %}">LISTADO CIRUGIAS</a>
+{% endblock %}
