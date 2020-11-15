@@ -5,6 +5,9 @@ from apps.pedido_ambulatorio.forms import PedidoAmbulatorioForm, DetallesForm
 from django.views.generic import ListView, UpdateView
 from django.urls import reverse_lazy
 from apps.pedido_ambulatorio.models import Diagnostico, Detalle_PedidoMedico, Pedido_Ambulatorio
+from datetime import datetime
+from django.db.models import Max
+import simplejson
 
 
 def Opciones(request):
@@ -94,3 +97,25 @@ class PedidoModificar(UpdateView):
             return HttpResponseRedirect(self.get_success_url())
         else:
             return self.render_to_response(self.get_context_data(form=form))
+
+def ObtenerUltimoIdPedido(request):
+    fecha = request.GET.get('fecha')
+    result = {}
+    result['data'] = []
+
+    try:
+        numero = 1
+
+        print(fecha)
+
+        list_query = {}
+        list_query['pedido__fecha_ingreso'] = datetime.strptime(fecha, '%d/%m/%Y').strftime('%Y-%m-%d')
+
+        max_num = Detalle_PedidoMedico.objects.filter(**list_query).aggregate(Max('pedido__idPedido'))
+        if max_num and max_num['pedido__idPedido__max']:
+            numero = int(max_num['pedido__idPedido__max']) + 1
+
+        result['numero'] = numero
+    except Exception:
+        result['numero'] = ""
+    return HttpResponse(simplejson.dumps(result, ensure_ascii=False), content_type='application/json')

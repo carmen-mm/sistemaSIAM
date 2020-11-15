@@ -365,6 +365,29 @@
 				}
 			}
 		}
+
+		ObtenerUltimoIdPedido();
+
+		$('#id_fecha_ingreso').change(function() {
+			ObtenerUltimoIdPedido();
+		});
+
+		function ObtenerUltimoIdPedido() {
+			if ($('#id_detalle_pedidomedico_set-TOTAL_FORMS').length > 0) {
+				$.ajax({
+					type: 'GET',
+					url: '/ambulatorio/obtener_ultimo_id_pedido/',
+					cache: false,
+					data: {'fecha': $('#id_fecha_ingreso').val()},
+					success: function(data) {
+						$('#id_idPedido').val(data.numero);
+					},
+					error: function(data) {
+						alert("No se pudo calcular el último id de Pedido");
+					}
+				});
+			}
+		}
 	});
 
 </script>
