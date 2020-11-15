@@ -105,9 +105,6 @@ def ObtenerUltimoIdPedido(request):
 
     try:
         numero = 1
-
-        print(fecha)
-
         list_query = {}
         list_query['pedido__fecha_ingreso'] = datetime.strptime(fecha, '%d/%m/%Y').strftime('%Y-%m-%d')
 
