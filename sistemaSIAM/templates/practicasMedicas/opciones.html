@@ -4,7 +4,7 @@
 
 {% block content1 %}
         {% if perms.pedido_ambulatorio.add_pedido_ambulatorio %}
-                <a class="btn btn-primary" href="{% url 'practicasMedicas:detalle' %}">INGRESAR NUEVO PEDIDO</a>
+                <a class="btn btn-primary" href="{% url 'practicasMedicas:detalle' %}">AGREGAR NUEVO PEDIDO</a>
         {% endif %}
                 <a class="btn btn-primary" href="{% url 'practicasMedicas:listarP' %}">LISTADO PEDIDOS AMBULATORIOS</a>
 {% endblock %}

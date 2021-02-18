@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, logout_then_login
 from django.urls import path, include
-# Acá están las urls globales y se incluyen las urls de cada aplicación
+# Acá se definen las urls globales y se incluyen las urls de cada aplicación
 
 urlpatterns = [
     path('admin/', admin.site.urls),

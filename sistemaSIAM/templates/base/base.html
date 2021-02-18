@@ -16,10 +16,10 @@
 	<!-- Font Awesome V5.9.0 -->
 	<link rel="stylesheet" href="{% static 'css/all.css' %}">
 
-	<!-- Sweet Alerts V8.13.0 CSS file -->
+	<!-- archivo CSS Sweet Alerts V8.13.0 CSS -->
 	<link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
 
-	<!-- Sweet Alert V8.13.0 JS file-->
+	<!-- archivo JS Sweet Alert V8.13.0 JS file-->
 	<script src="{% static 'js/sweetalert2.min.js' %}" ></script>
 
 	<!-- jQuery Custom Content Scroller V3.1.5 -->
@@ -72,7 +72,8 @@
                 <nav class="full-box nav-lateral-menu">
 					<ul>
 						<li>
-							<a href="{% url 'practicasMedicas:index' %}"> SIAM </a>
+							<a href="{% url 'practicasMedicas:index' %}">
+								<i class="fas fa-home"></i> SIAM - Inicio</a>
 						</li>
 
 						<li>
@@ -95,7 +96,7 @@
 							<ul>
 								{% if perms.pedido_ambulatorio.add_pedido_ambulatorio %}
 								<li>
-									<a href="{% url 'practicasMedicas:detalle'%}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Pedido</a>
+									<a href="{% url 'practicasMedicas:detalle'%}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar nuevo Pedido</a>
 								</li>
 								{% endif %}
 								<li>
@@ -177,7 +178,7 @@
 			<!-- Barra de navegación    SUPERIOR  -->
             <nav class="full-box navbar-info">
 
-				<a>	SIAM - SISTEMA INTEGRAL DE AUDITORIA MEDICA</a>
+				<a>	SIAM - SISTEMA INTEGRAL DE AUDITORÍA MÉDICA</a>
 
 				<a href="">
 					<i class="fas fa-user-cog"></i>
@@ -190,7 +191,6 @@
 
 			<!-- Content Central-->
 			<div class="full-box tile-container">
-
 			{% block content1 %}
 
 				<a href="{% url 'beneficiario:opciones'%}" class="tile">
@@ -209,7 +209,7 @@
 				</a>
 
 				<a href="{% url 'cirugias:opcionesC' %}" class="tile">
-					<div class="tile-tittle">CIRUGIAS</div>
+					<div class="tile-tittle">CIRUGÍAS</div>
 					<div class="tile-icon">
 						<i class="fas fa-ambulance fa-fw"></i>
 
@@ -263,12 +263,12 @@
 		</section>
 	</main>
 
-<footer style="position:absolute; left: 0; bottom: 0px; width: 100%; min-height: 75px; max-height: 75px; height: 7%;">
+<!--<footer class="" style="position:absolute; left: 0; bottom: 0px; width: 100%; min-height: 75px; max-height: 75px; height: 7%;">
     <p style="font-size:10pt;padding-left:1%; padding-right:1%">
 
 		<span style="float:right" class="swal2-footer">	* 2020 * Ante cualquier consulta o problemas con el sitio enviar e-mail a admin@gmail.com</span>
     </p>
-</footer>
+</footer> -->
 </body>
 
 	<!--=============================================

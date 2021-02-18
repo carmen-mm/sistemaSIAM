@@ -40,7 +40,7 @@ def Detalle_Pedido(request):
             formset.save()
             url = reverse_lazy('practicasMedicas:listarP')
             return HttpResponseRedirect(url)
-    return render(request, 'practicasMedicas/detallePedido.html', {'form': form, 'formset': formset })
+    return render(request, 'practicasMedicas/detallePedido.html', {'form': form, 'formset': formset})
 
 class PedidosListar(ListView):
     model = Pedido_Ambulatorio

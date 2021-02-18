@@ -4,7 +4,7 @@
 
 {% block content1 %}
         {% if perms.solicitud_cirugia.add_solicitud_cirugia %}
-                <a class="btn btn-primary" href="{% url 'cirugias:nuevaC' %}">NUEVA CIRUGIA</a>
+                <a class="btn btn-primary" href="{% url 'cirugias:nuevaC' %}">NUEVA CIRUGÍA</a>
         {% endif %}
-                <a class="btn btn-primary" href="{% url 'cirugias:listarC' %}">LISTADO CIRUGIAS</a>
+                <a class="btn btn-primary" href="{% url 'cirugias:listarC' %}">LISTADO CIRUGÍAS</a>
 {% endblock %}

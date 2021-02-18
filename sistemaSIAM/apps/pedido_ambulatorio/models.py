@@ -3,9 +3,6 @@ from apps.beneficiario.models import Beneficiario
 from apps.doctores.models import Doctor
 from datetime import datetime
 
-
-# Create your models here.
-
 class Practica_Medica (models.Model):
     codigo = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=150)
