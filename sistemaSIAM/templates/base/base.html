@@ -113,11 +113,11 @@
 							<ul>
 								{% if perms.solicitud_cirugia.add_solicitud_cirugia %}
 								<li>
-									<a href="{% url 'cirugias:nuevaC'%}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar cirugía</a>
+									<a href="{% url 'cirugia:nuevaC'%}"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar cirugía</a>
 								</li>
 								{% endif %}
 								<li>
-									<a href="{% url 'cirugias:listarC'%}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de cirugías</a>
+									<a href="{% url 'cirugia:listarC'%}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de cirugías</a>
 								</li>
 								<li>
 									<a href=""><i class="fas fa-search fa-fw"></i> &nbsp; Buscar cirugía</a>
@@ -208,7 +208,7 @@
 					</div>
 				</a>
 
-				<a href="{% url 'cirugias:opcionesC' %}" class="tile">
+				<a href="{% url 'cirugia:opcionesC' %}" class="tile">
 					<div class="tile-tittle">CIRUGÍAS</div>
 					<div class="tile-icon">
 						<i class="fas fa-ambulance fa-fw"></i>
@@ -337,6 +337,12 @@
 		function doctoresPorCentroMedico() {
 			if ($('#id_centromedico')) {
 				var id_centromedico = $('#id_centromedico').val();
+
+				var listadoDoctores = $("select[id^='id_doctorTratante']");
+				if($("select[id^='id_doctor']").length > 0) {
+					listadoDoctores = $("select[id^='id_doctor']");
+				}
+
 				if(id_centromedico != "") {
 					$.ajax({
 						type: 'GET',
@@ -348,45 +354,48 @@
 							if(data.data.length > 0) {
 								for(var i=0; i < data.data.length; i++) {
 									var strSelect = "";
-									if ($("select[id^='id_doctorTratante']").val() == data.data[i].cuit)
+									if (listadoDoctores.val() == data.data[i].cuit)
 										strSelect = "selected='selected'";
 									options += '<option value="' + data.data[i].cuit + '" ' + strSelect + '>' + data.data[i].nombre + '</option>';
 								}
 							}
-							$("select[id^='id_doctorTratante']").html(options);
+							listadoDoctores.html(options);
 						},
 						error: function(data) {
-							$("select[id^='id_doctorTratante']").html("<option selected='selected' value=''>---------</option>");
+							listadoDoctores.html("<option selected='selected' value=''>---------</option>");
 						}
 					});
 				}
 				else {
-					$("select[id^='id_doctorTratante']").html("<option selected='selected' value=''>---------</option>");
+					listadoDoctores.html("<option selected='selected' value=''>---------</option>");
 				}
 			}
 		}
 
-		ObtenerUltimoIdPedido();
+		// Estoy en el formulario de Pedido Medico y estoy por agregar un nuevo Pedido
+		if ($('#id_detalle_pedidomedico_set-TOTAL_FORMS').length > 0 && $('#id_idPedido').val().length == 0) {
+			ObtenerUltimoIdPedido();
+		}
 
 		$('#id_fecha_ingreso').change(function() {
-			ObtenerUltimoIdPedido();
+			if ($('#id_detalle_pedidomedico_set-TOTAL_FORMS').length > 0) {
+				ObtenerUltimoIdPedido();
+			}
 		});
 
 		function ObtenerUltimoIdPedido() {
-			if ($('#id_detalle_pedidomedico_set-TOTAL_FORMS').length > 0) {
-				$.ajax({
-					type: 'GET',
-					url: '/ambulatorio/obtener_ultimo_id_pedido/',
-					cache: false,
-					data: {'fecha': $('#id_fecha_ingreso').val()},
-					success: function(data) {
-						$('#id_idPedido').val(data.numero);
-					},
-					error: function(data) {
-						alert("No se pudo calcular el último id de Pedido");
-					}
-				});
-			}
+			$.ajax({
+				type: 'GET',
+				url: '/ambulatorio/obtener_ultimo_id_pedido/',
+				cache: false,
+				data: {'fecha': $('#id_fecha_ingreso').val()},
+				success: function(data) {
+					$('#id_idPedido').val(data.numero);
+				},
+				error: function(data) {
+					alert("No se pudo calcular el último id de Pedido");
+				}
+			});
 		}
 	});
 

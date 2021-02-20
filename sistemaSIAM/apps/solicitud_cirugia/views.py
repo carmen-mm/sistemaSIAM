@@ -19,5 +19,14 @@ class CirugiaNueva(CreateView):
     template_name = 'cirugia/registrar_cirugia.html'
     success_url = reverse_lazy('cirugia:listarC')
 
+class CirugiaModificar(UpdateView):
+    model = Solicitud_Cirugia
+    # Indico qué formulario voy a utilizar apps->solicitud_cirugia->forms.py
+    form_class = CirugiaForm
+    # Indico qué template voy a utilizar templates->cirugia->registrar_cirugia.html
+    template_name = 'cirugia/registrar_cirugia.html'
+    # Redirigimos luego de insertar una cirugia nueva
+    success_url = reverse_lazy('cirugia:listarC')
+
 def Opciones(request):
   return render(request,'cirugia/opciones.html')

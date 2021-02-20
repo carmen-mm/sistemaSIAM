@@ -6,7 +6,7 @@ class Beneficiario(models.Model):
     class Meta:
         db_table ='Beneficiarios'
         verbose_name_plural = 'Beneficiarios'
-        ordering = ['-apellidos']
+        ordering = ['apellidos']
         #La dupla tipoDNI y dni debe ser única
         constraints = [
             models.UniqueConstraint(fields=['tipoDNI', 'dni'], name='documento')

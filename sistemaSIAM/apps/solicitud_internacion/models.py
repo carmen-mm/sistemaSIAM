@@ -30,7 +30,7 @@ class Internacion(models.Model):
     fecha_egreso = models.DateField(null=True, blank=True)
     dias_dados = models.IntegerField(null=True, blank=True)
     dias_prorroga = models.IntegerField(null=True, blank=True)
-    previa = models.CharField(max_length=2, choices=previa_CHOICES)
+    previa = models.CharField(max_length=2, choices=previa_CHOICES, null=True, blank=True)
     tipo1_internacion = models.CharField(max_length=10, choices=tipo1_CHOICES)
     tipo2_internacion = models.CharField(max_length=10, choices=tipo2_CHOICES)
 

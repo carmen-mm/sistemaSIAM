@@ -38,14 +38,14 @@ class Solicitud_Cirugia (models.Model):
     prequirurgicos = models.BooleanField()
     fecha_cirugia = models.DateField(null=True, blank=True)
     tipo_cirugia = models.CharField(max_length=1, choices=tipo_CHOICES)
-    importe_coseguro = models.FloatField(blank=True)
+    importe_coseguro = models.FloatField(blank=True, default=0.0)
     observaciones = models.TextField(max_length=200)
 
     #Atributos - Relaciones
     #Una solicitud de cirugía corresponde a un beneficiario
     beneficiario = models.ForeignKey(Beneficiario, on_delete=models.CASCADE)
     # Una solicitud de Cirugía tiene una cirugía determinada
-    cirugia = models.ForeignKey(Cirugia, on_delete=models.CASCADE)
+    cirugia = models.ForeignKey(Cirugia, on_delete=models.CASCADE, null=True, blank=True)
     #Una solicitud de cirugía es solicitada por un Doctor tratante
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     # Una solicitud de cirugía registra el Centro Médico donde se realiza la cirugía

@@ -15,7 +15,7 @@
                                     <th>BENEFICIARIO</th>
                                     <th>CENTRO MEDICO</th>
                                     <th>DOCTOR TRATANTE</th>
-                                    <th>MOTIVO</th>
+                                    <!--<th>MOTIVO</th>-->
                                     <th>ESTADO CLAVE</th>
                                     <th>OBSERVACIONES</th>
                                     <th>ACCIONES</th></tr>
@@ -26,16 +26,16 @@
                                     <td>{{ c.beneficiario }} </td>
                                     <td> {{ c.centromedico }} </td>
                                     <td> {{ c.doctor }} </td>
-                                    <td> {{ c.cirugia }} </td>
+                                    <!--<td> {{ c.cirugia }} </td>-->
                                     <td> {{ c.estado_clave }} </td>
                                     <td> {{ c.observaciones }} </td>
-                                    <td><a class="btn btn-primary" href="{% url 'internacion:modificar' internacion.id %}">modificar</a>
+                                    <td><a class="btn btn-primary" href="{% url 'cirugia:modificarC' c.id %}">modificar</a>
                                 </tr>
                             {% endfor %}
                     </table>
                 </div>
     </div>
-    <a class="btn btn-raised btn-secondary btn-sm" role="button" href="{% url 'cirugias:opcionesC' %}">VOLVER</a>
+    <a class="btn btn-raised btn-secondary btn-sm" role="button" href="{% url 'cirugia:opcionesC' %}">VOLVER</a>
     <a class="btn btn-raised btn-info btn-sm" role="button" href="" target="_blank">IMPRIMIR LISTADO</a>
 
 </div>
