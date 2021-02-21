@@ -7,6 +7,7 @@ from apps.solicitud_internacion.forms import InternacionForm
 from django.http import HttpResponse
 
 import simplejson
+import datetime
 
 # Create your views here.
 
@@ -52,4 +53,22 @@ def DoctoresPorCentroMedico(request):
                 'nombre': doc['apellidos'] + " " + doc['nombre']
             })
         result['data'] = doctores
+    return HttpResponse(simplejson.dumps(result, ensure_ascii=False), content_type='application/json')
+
+def CalcularProrroga(request):
+    fecha_ingreso = request.GET.get('fecha_ingreso')
+    fecha_egreso = request.GET.get('fecha_egreso')
+    dias_dados = request.GET.get('dias_dados')
+    result = {}
+    result['data'] = []
+    if fecha_ingreso and fecha_egreso and dias_dados:
+        fecha_ingreso_date = datetime.datetime.strptime(fecha_ingreso, '%d/%m/%Y')
+        fecha_egreso_date = datetime.datetime.strptime(fecha_egreso, '%d/%m/%Y')
+        resta_fechas = fecha_egreso_date - fecha_ingreso_date
+        calculo_dias = resta_fechas.days - int(dias_dados)
+        if calculo_dias > 0:
+            dias_prorroga = calculo_dias
+        else:
+            dias_prorroga = 0
+        result['dias_prorroga'] = dias_prorroga
     return HttpResponse(simplejson.dumps(result, ensure_ascii=False), content_type='application/json')

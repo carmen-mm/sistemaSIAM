@@ -58,6 +58,12 @@
 										{% elif 'medicoauditor' == group.name %}
 											<img src="{% static 'assets/avatar/auditor.png' %}" class="img-fluid" alt="Avatar">
 											PERFIL: MEDICO AUDITOR
+											{%  elif 'ambulatorio' == group.name %}
+												<img src="{% static 'assets/avatar/Avatar.png' %}" class="img-fluid" alt="Avatar">
+												PERFIL: AMBULATORIO
+												{%  elif 'internaciones-cirugias' == group.name %}
+													<img src="{% static 'assets/avatar/Avatar.png' %}" class="img-fluid" alt="Avatar">
+													PERFIL: Internaciones y cirugías
 
 							{% endif %}
 					 {% endfor %}
@@ -102,9 +108,9 @@
 								<li>
 									<a href="{% url 'practicasMedicas:listarP'%}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Listado de Pedidos</a>
 								</li>
-								<li>
+							<!-- 	<li>
 									<a href=""><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Pedido</a>
-								</li>
+								</li> -->
 							</ul>
 						</li>
 
@@ -119,9 +125,9 @@
 								<li>
 									<a href="{% url 'cirugia:listarC'%}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de cirugías</a>
 								</li>
-								<li>
+							<!-- 	<li>
 									<a href=""><i class="fas fa-search fa-fw"></i> &nbsp; Buscar cirugía</a>
-								</li>
+								</li> -->
 							</ul>
 						</li>
 						<li>
@@ -135,9 +141,9 @@
 								<li>
 									<a href="{% url 'internacion:listarI'%}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de internaciones</a>
 								</li>
-								<li>
+							<!-- 	<li>
 									<a href=""><i class="fas fa-search fa-fw"></i> &nbsp; Buscar internación</a>
-								</li>
+								</li> -->
 
 							</ul>
 						</li>
@@ -396,6 +402,33 @@
 					alert("No se pudo calcular el último id de Pedido");
 				}
 			});
+		}
+
+		calcularProrroga();
+
+		$('#id_fecha_egreso').change(function() {
+			calcularProrroga();
+		});
+
+		$('#id_dias_dados').change(function() {
+			calcularProrroga();
+		});
+
+		function calcularProrroga() {
+			if ($('#id_fecha_egreso').val().length == 10 && $('#id_dias_dados').val().length > 0) {
+				$.ajax({
+					type: 'GET',
+					url: '/internacion/calcular_prorroga/',
+					cache: false,
+					data: {'fecha_ingreso': $('#id_fecha_ingreso').val(), 'fecha_egreso': $('#id_fecha_egreso').val(), 'dias_dados': $('#id_dias_dados').val()},
+					success: function(data) {
+						$('#id_dias_prorroga').val(data.dias_prorroga);
+					},
+					error: function(data) {
+						alert("No se pudo calcular los días de prórroga.");
+					}
+				});
+			}
 		}
 	});
 
