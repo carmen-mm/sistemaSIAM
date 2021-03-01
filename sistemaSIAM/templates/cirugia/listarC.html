@@ -30,13 +30,16 @@
                                     <td> {{ c.estado_clave }} </td>
                                     <td> {{ c.observaciones }} </td>
                                     <td><a class="btn btn-primary" href="{% url 'cirugia:modificarC' c.id %}">modificar</a>
+                                         <a class="btn btn-primary" href="{% url 'cirugia:eliminar' c.id %}">eliminar</a> </td>
+
                                 </tr>
+
                             {% endfor %}
                     </table>
                 </div>
     </div>
     <a class="btn btn-raised btn-secondary btn-sm" role="button" href="{% url 'cirugia:opcionesC' %}">VOLVER</a>
-    <a class="btn btn-raised btn-info btn-sm" role="button" href="" target="_blank">IMPRIMIR LISTADO</a>
+    <a class="btn btn-raised btn-info btn-sm" role="button" href="{% url 'cirugia:reporte' %}" target="_blank">IMPRIMIR LISTADO</a>
 
 </div>
 {% endblock %}

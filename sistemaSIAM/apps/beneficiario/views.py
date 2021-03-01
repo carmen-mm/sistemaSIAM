@@ -51,11 +51,11 @@ class ReportePDF(View):
 
     def tabla(self, pdf, y):
         # Creamos una tupla de encabezados para nuestra tabla
-        encabezados = ('TIPODNI', 'DNI', 'NOMBRE')
+        encabezados = ('DNI', 'BENEFICIARIO', 'LOCALIDAD', 'AFILIADO')
         # Creamos una lista de tuplas que van a contener a las personas
-        detalles = [(beneficiario.tipoDNI, beneficiario.dni, beneficiario.nombre) for beneficiario in Beneficiario.objects.all()]
+        detalles = [(beneficiario.tipoDNI +' '+str( beneficiario.dni),beneficiario.apellidos+' '+ beneficiario.nombre, beneficiario.localidad, beneficiario.afiliado) for beneficiario in Beneficiario.objects.all()]
         # Establecemos el tamaño de cada una de las columnas de la tabla
-        detalle_orden = Table([encabezados] + detalles, colWidths=[2 * cm, 5 * cm, 5 * cm, 5 * cm])
+        detalle_orden = Table([encabezados] + detalles, colWidths=[4 * cm, 5 * cm, 5 * cm, 3 * cm])
         # Aplicamos estilos a las celdas de la tabla
         detalle_orden.setStyle(TableStyle(
             [

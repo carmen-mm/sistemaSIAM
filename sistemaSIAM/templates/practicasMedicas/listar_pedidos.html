@@ -7,9 +7,11 @@
 <h2 align="left">Listado Pedidos </h2>
     <form method="get" action="{% url 'practicasMedicas:listarP' %}">
         {% csrf_token %}
-        <p>Pedidos: <input type="text" name="filter"/></p>
-        <p><button type="submit" class="btn btn-raised btn-info"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
-            </p>
+        <!--<p>Pedido N°: <input type="text" name="filter"/> </p>-->
+        <p> Nro PEDIDO: <input type="text" name="filter_pedido"/> FECHA: <input type="text" name="filter_fecha"/>
+          APELLIDO: <input type="text" name="filter_apellido"/></p>
+        <p><button type="submit" class="btn btn-raised btn-info"><i class="fas fa-search"></i> BUSCAR</button></p>
+
     </form>
     <div class="container-fluid">
 				<div class="table-responsive">
@@ -31,7 +33,7 @@
                 </div>
     </div>
     <a class="btn btn-raised btn-secondary btn-sm" role="button" href="{% url 'practicasMedicas:index' %}">VOLVER</a>
-    <a class="btn btn-raised btn-info btn-sm" role="button" href="{% url 'practicasMedicas:listarP' %}" target="_blank">IMPRIMIR LISTADO</a>
+    <a class="btn btn-raised btn-info btn-sm" role="button" href="{% url 'practicasMedicas:reporte' %}" target="_blank">IMPRIMIR LISTADO</a>
 
 </div>
 {% endblock %}

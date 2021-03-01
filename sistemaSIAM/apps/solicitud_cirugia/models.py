@@ -34,8 +34,8 @@ class Solicitud_Cirugia (models.Model):
     #Atributos
     fecha_ingreso = models.DateField(default=datetime.now)
     estado_clave = models.CharField(max_length=1, choices=estado_CHOICES)
-    material = models.BooleanField()
-    prequirurgicos = models.BooleanField()
+    material = models.BooleanField(default=False)
+    prequirurgicos = models.BooleanField(default=False)
     fecha_cirugia = models.DateField(null=True, blank=True)
     tipo_cirugia = models.CharField(max_length=1, choices=tipo_CHOICES)
     importe_coseguro = models.FloatField(blank=True, default=0.0)

@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
 
-from apps.pedido_ambulatorio.views import index, DiagnosticoList, Detalle_Pedido, PedidosListar, Opciones, PedidoModificar, ObtenerUltimoIdPedido
+from apps.pedido_ambulatorio.views import index, DiagnosticoList, Detalle_Pedido, PedidosListar, Opciones, PedidoModificar, ObtenerUltimoIdPedido, ReportePDF
 
 # en urlpatterns se listan todas las urls de las vistas de la app pedido_ambulatorio
 app_name = "practicasMedicas"
@@ -14,5 +14,6 @@ urlpatterns = [
     path('modificar/<int:pk>', login_required(PedidoModificar.as_view()), name='modificar'),
     path('opciones', Opciones, name='opciones'),
     path('obtener_ultimo_id_pedido/', login_required(ObtenerUltimoIdPedido), name='obtener_ultimo_id_pedido'),
+    path('reporte/', login_required(ReportePDF.as_view()), name='reporte'),
 ]
 

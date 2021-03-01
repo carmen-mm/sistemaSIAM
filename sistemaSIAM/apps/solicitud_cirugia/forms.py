@@ -37,8 +37,6 @@ class CirugiaForm(forms.ModelForm):
         widgets = {
                 'fecha_ingreso': forms.DateInput(attrs={'class': 'form-control'}),
                 'estado_clave': forms.Select(attrs={'class': 'form-control'}),
-                'material': forms.RadioSelect(attrs={'class': 'form-control'}),
-                'prequirurgicos': forms.RadioSelect(attrs={'class': 'form-control'}),
                 'fecha_cirugia': forms.DateInput(attrs={'class': 'form-control'}),
                 'tipo_cirugia': forms.Select(attrs={'class': 'form-control'}),
                 'importe_coseguro': forms.NumberInput(attrs={'class': 'form-control'}),
